@@ -37,16 +37,18 @@ def send_email(to: str, subject: str, html_body: str) -> None:
         print("ERROR: GMAIL_ADDRESS and GMAIL_APP_PASSWORD must be set in .env", file=sys.stderr)
         sys.exit(1)
 
+    recipients = [r.strip() for r in to.split(",") if r.strip()]
+
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = gmail_address
-    msg["To"] = to
+    msg["To"] = ", ".join(recipients)
     msg.attach(MIMEText(html_body, "html"))
 
     with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
         server.starttls()
         server.login(gmail_address, app_password)
-        server.sendmail(gmail_address, to, msg.as_string())
+        server.sendmail(gmail_address, recipients, msg.as_string())
 
 
 def main():
