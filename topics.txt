@@ -11,7 +11,7 @@
 [SENT] Production Design: Building Worlds on a Budget
 [SENT] The Role of the First AD: Running a Film Set
 [SENT] Sound Design in Film: The Invisible Art That Controls How You Feel
-Score vs. Soundtrack: How Music Shapes a Film
+[SENT] Score vs. Soundtrack: How Music Shapes a Film
 The Evolution of the Steadicam: From Rocky to Modern Cinema
 Practical Effects vs. CGI: When Each Approach Wins
 Color Grading: How the Look of a Film Gets Made
