@@ -5,7 +5,7 @@
 
 # --- FILMMAKING CRAFT ---
 [SENT] The Art of Cinematography: How Top DPs Light a Scene
-Directing Actors: Techniques the Best Directors Use on Set
+[SENT] Directing Actors: Techniques the Best Directors Use on Set
 Film Editing Secrets: How Editors Shape Story and Emotion
 Production Design: Building Worlds on a Budget
 The Role of the First AD: Running a Film Set
