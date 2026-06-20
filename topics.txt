@@ -2,6 +2,7 @@
 # Lines starting with # are ignored
 # [SENT] prefix means the topic has already been sent
 # Run with: python run_newsletter.py --from-queue
+how ai is changing the film industry
 
 # --- FILMMAKING CRAFT ---
 [SENT] The Art of Cinematography: How Top DPs Light a Scene
