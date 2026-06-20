@@ -67,8 +67,18 @@ def add_topics():
         return redirect("/")
     new_lines = [l.strip() for l in raw.splitlines() if l.strip()]
     content, sha = get_topics_file()
-    content = content.rstrip("\n") + "\n" + "\n".join(new_lines) + "\n"
-    put_topics_file(content, sha)
+
+    # Insert new topics after the header comment block, so they're next in queue
+    lines = content.splitlines()
+    insert_at = 0
+    for i, line in enumerate(lines):
+        if line.strip().startswith("#"):
+            insert_at = i + 1
+        else:
+            break
+
+    lines[insert_at:insert_at] = new_lines
+    put_topics_file("\n".join(lines) + "\n", sha)
     return redirect("/")
 
 
