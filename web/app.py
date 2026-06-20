@@ -110,9 +110,9 @@ def suggest():
 
 {existing_text}
 
-Suggest 10 new newsletter topic ideas that are different from the ones above but fit the same theme.
+Suggest 4 new newsletter topic ideas that are different from the ones above but fit the same theme.
 Each topic should be a specific, interesting angle — not generic.
-Return ONLY a JSON array of 10 strings, no explanation. Example format:
+Return ONLY a JSON array of 4 strings, no explanation. Example format:
 ["Topic one", "Topic two", ...]"""
 
     resp = requests.post(

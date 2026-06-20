@@ -6,289 +6,173 @@
     <title>Newsletter Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* === RESET & BASE === */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: #1a3340;
             color: #FBE9D0;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* === DESIGN TOKENS === */
         :root {
             --bg-primary: #1a3340;
             --bg-secondary: #244855;
             --bg-hover: #2d5566;
             --border-color: #2d5566;
-            --accent-primary: #E64833;
+            --accent: #E64833;
             --accent-hover: #cc3d29;
             --accent-light: #f07060;
-            --text-primary: #FBE9D0;
-            --text-secondary: #90AEAD;
-            --text-muted: #6a8a88;
-            --success-color: #90AEAD;
-            --error-color: #E64833;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
-            --transition-fast: 150ms ease;
-            --transition-normal: 250ms ease;
+            --teal: #90AEAD;
+            --cream: #FBE9D0;
+            --muted: #6a8a88;
             --radius: 12px;
         }
 
-        /* === LAYOUT === */
         .container {
-            max-width: 1100px;
+            max-width: 680px;
             margin: 0 auto;
-            padding: 0 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            padding: 0 20px 60px;
         }
 
+        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 32px 0;
-            gap: 20px;
-            animation: slideDown 0.6s ease-out;
+            padding: 32px 0 24px;
         }
 
         .header__title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            color: var(--cream);
             letter-spacing: -0.01em;
         }
 
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-            margin-bottom: 32px;
-            animation: fadeIn 0.8s ease-out 0.15s both;
-        }
-
-        .stat-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition-normal);
-        }
-
-        .stat-card:hover {
-            border-color: var(--accent-primary);
-            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .stat-card__value {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--accent-primary);
-            line-height: 1;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
-        }
-
-        .stat-card__label {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .banner {
-            background-color: rgba(144, 174, 173, 0.15);
-            border: 1px solid rgba(144, 174, 173, 0.3);
-            border-radius: var(--radius);
-            padding: 16px 20px;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #90AEAD;
-            font-size: 14px;
-            font-weight: 500;
-            animation: slideUp 0.5s ease-out;
-        }
-
-        .banner__icon {
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            flex: 1;
-            animation: fadeIn 0.8s ease-out 0.3s both;
-        }
-
-        /* === SECTIONS === */
-        .section {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .section__header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section__title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-primary);
-            letter-spacing: -0.01em;
-        }
-
-        .section__badge {
-            background-color: var(--accent-primary);
+        .btn-send {
+            background-color: var(--accent);
             color: white;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 4px 8px;
-            border-radius: 6px;
-            min-width: 24px;
-            text-align: center;
-        }
-
-        .topic-list {
-            flex: 1;
-            overflow-y: auto;
-            max-height: 500px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .topic-list::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .topic-list::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .topic-list::-webkit-scrollbar-thumb {
-            background-color: var(--border-color);
-            border-radius: 3px;
-        }
-
-        .topic-list::-webkit-scrollbar-thumb:hover {
-            background-color: var(--accent-primary);
-        }
-
-        .topic-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 14px;
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            transition: all var(--transition-fast);
-            font-size: 14px;
-            color: var(--text-primary);
-        }
-
-        .topic-row:hover {
-            background-color: var(--bg-hover);
-            border-color: var(--accent-primary);
-        }
-
-        .topic-row__text {
-            flex: 1;
-            min-width: 0;
-            word-break: break-word;
-            padding-right: 12px;
-        }
-
-        .topic-row__icon {
-            color: var(--text-muted);
-            margin-right: 8px;
-            flex-shrink: 0;
-            font-size: 13px;
-        }
-
-        .topic-row__delete {
-            background: none;
             border: none;
-            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
-            width: 24px;
-            height: 24px;
+            font-family: inherit;
+            transition: background 150ms ease;
+        }
+
+        .btn-send:hover { background-color: var(--accent-hover); }
+
+        /* Nav tabs */
+        .nav {
+            display: flex;
+            gap: 4px;
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 28px;
+        }
+
+        .nav__tab {
+            flex: 1;
+            padding: 9px 12px;
+            border: none;
+            background: none;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 7px;
+            font-family: inherit;
+            transition: all 150ms ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 4px;
-            transition: all var(--transition-fast);
-            font-size: 16px;
-            flex-shrink: 0;
+            gap: 6px;
         }
 
-        .topic-row__delete:hover {
-            color: var(--error-color);
-            background-color: rgba(239, 68, 68, 0.1);
+        .nav__tab.is-active {
+            background-color: var(--bg-primary);
+            color: var(--cream);
         }
 
-        .topic-row__delete:active {
-            transform: scale(0.95);
+        .nav__tab:hover:not(.is-active) {
+            color: var(--teal);
         }
 
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-muted);
-            font-size: 14px;
+        .nav__badge {
+            background-color: var(--accent);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 10px;
+            line-height: 1.4;
         }
 
-        .empty-state__icon {
-            font-size: 32px;
-            margin-bottom: 12px;
-            opacity: 0.5;
+        .nav__tab.is-active .nav__badge {
+            background-color: var(--accent);
         }
 
-        /* === TEXTAREA & INPUTS === */
-        .input-group {
-            display: flex;
-            flex-direction: column;
+        /* Pages */
+        .page { display: none; }
+        .page.is-active { display: block; }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-color);
+            margin-bottom: 28px;
         }
 
+        .stat {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            text-align: center;
+        }
+
+        .stat__value {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+
+        .stat__label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* Card */
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .card__title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+        }
+
+        /* Textarea */
         .textarea {
             width: 100%;
             min-height: 100px;
@@ -296,489 +180,360 @@
             background-color: var(--bg-primary);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            color: var(--text-primary);
+            color: var(--cream);
             font-family: inherit;
             font-size: 14px;
             line-height: 1.5;
             resize: vertical;
-            transition: all var(--transition-fast);
+            transition: border 150ms ease;
         }
 
-        .textarea::placeholder {
-            color: var(--text-muted);
-        }
-
+        .textarea::placeholder { color: var(--muted); }
         .textarea:focus {
             outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.1);
+            border-color: var(--accent);
         }
 
-        /* === BUTTONS === */
-        .btn {
-            padding: 10px 16px;
+        .btn-primary {
+            width: 100%;
+            padding: 11px 16px;
+            background-color: var(--accent);
+            color: white;
             border: none;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: all var(--transition-fast);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
             font-family: inherit;
-            letter-spacing: -0.01em;
+            margin-top: 10px;
+            transition: background 150ms ease;
         }
 
-        .btn:active {
-            transform: scale(0.97);
-        }
+        .btn-primary:hover { background-color: var(--accent-hover); }
 
-        .btn:focus-visible {
-            outline: 2px solid var(--accent-primary);
-            outline-offset: 2px;
-        }
-
-        .btn--primary {
-            background-color: var(--accent-primary);
-            color: white;
-            width: 100%;
-            padding: 12px 16px;
-            font-size: 14px;
-        }
-
-        .btn--primary:hover {
-            background-color: var(--accent-hover);
-            box-shadow: 0 8px 16px rgba(124, 58, 237, 0.3);
-        }
-
-        .btn--primary:active {
-            background-color: #5b21b6;
-        }
-
-        .btn--trigger {
-            background-color: var(--accent-primary);
-            color: white;
-            padding: 12px 24px;
-            font-size: 15px;
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn--trigger:hover {
-            background-color: var(--accent-hover);
-            box-shadow: 0 0 24px rgba(124, 58, 237, 0.4);
-        }
-
-        .btn--trigger:hover::before {
-            animation: pulse-ring 1.5s ease-out infinite;
-        }
-
-        .btn--trigger::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            pointer-events: none;
-        }
-
-        .btn--trigger:active {
-            background-color: #5b21b6;
-        }
-
-        /* === RESPONSIVE === */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-
-            .header {
-                flex-direction: column;
-                padding: 24px 0;
-                gap: 16px;
-            }
-
-            .header__title {
-                font-size: 20px;
-                width: 100%;
-            }
-
-            .btn--trigger {
-                width: 100%;
-            }
-
-            .stats-row {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                margin-bottom: 24px;
-            }
-
-            .content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .topic-list {
-                max-height: 350px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header__title {
-                font-size: 18px;
-            }
-
-            .stat-card__value {
-                font-size: 36px;
-            }
-
-            .section {
-                padding: 16px;
-            }
-
-            .section__title {
-                font-size: 15px;
-            }
-
-            .topic-row {
-                font-size: 13px;
-                padding: 10px 12px;
-            }
-
-            .textarea {
-                min-height: 80px;
-                font-size: 13px;
-            }
-        }
-
-        /* === ANIMATIONS === */
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse-ring {
-            0% {
-                transform: translate(-50%, -50%) scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0;
-            }
-        }
-
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .spinner {
-            display: inline-block;
-            width: 14px;
-            height: 14px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        .is-loading .spinner {
-            margin-right: 6px;
-        }
-
-        .btn--ai {
-            background-color: transparent;
-            color: var(--accent-light);
-            border: 1px solid var(--accent-primary);
+        .btn-ai {
             width: 100%;
             padding: 10px 16px;
+            background: none;
+            color: var(--teal);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             font-size: 13px;
-        }
-
-        .btn--ai:hover {
-            background-color: rgba(124, 58, 237, 0.1);
-        }
-
-        .suggestions {
-            display: none;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .suggestions.is-visible {
-            display: flex;
-        }
-
-        .suggestions__label {
-            font-size: 12px;
             font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            cursor: pointer;
+            font-family: inherit;
+            margin-top: 8px;
+            transition: all 150ms ease;
         }
 
-        .suggestions__chips {
-            display: flex;
+        .btn-ai:hover {
+            border-color: var(--teal);
+            background-color: rgba(144, 174, 173, 0.08);
+        }
+
+        /* Chips */
+        .chips {
+            display: none;
             flex-wrap: wrap;
             gap: 8px;
+            margin-top: 14px;
         }
 
+        .chips.is-visible { display: flex; }
+
         .chip {
-            background-color: rgba(230, 72, 51, 0.15);
+            background-color: rgba(230, 72, 51, 0.12);
             border: 1px solid rgba(230, 72, 51, 0.3);
             color: var(--accent-light);
             font-size: 13px;
-            padding: 6px 12px;
+            padding: 7px 14px;
             border-radius: 20px;
             cursor: pointer;
-            transition: all var(--transition-fast);
+            transition: all 150ms ease;
             font-family: inherit;
         }
 
         .chip:hover {
-            background-color: rgba(230, 72, 51, 0.3);
-            border-color: var(--accent-primary);
+            background-color: rgba(230, 72, 51, 0.25);
+            border-color: var(--accent);
             color: white;
         }
 
         .chip.is-added {
-            background-color: rgba(144, 174, 173, 0.15);
+            background-color: rgba(144, 174, 173, 0.12);
             border-color: rgba(144, 174, 173, 0.3);
-            color: var(--success-color);
+            color: var(--teal);
             cursor: default;
+        }
+
+        /* Topic list */
+        .topic-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .topic-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 11px 14px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--cream);
+            transition: border 150ms ease;
+        }
+
+        .topic-row:hover { border-color: var(--accent); }
+
+        .topic-row--sent {
+            color: var(--muted);
+        }
+
+        .topic-row--sent:hover { border-color: var(--teal); }
+
+        .topic-row__text { flex: 1; padding-right: 12px; word-break: break-word; }
+
+        .topic-row__check {
+            color: var(--teal);
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .topic-row__delete {
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 16px;
+            flex-shrink: 0;
+            transition: all 150ms ease;
+        }
+
+        .topic-row__delete:hover {
+            color: var(--accent);
+            background-color: rgba(230, 72, 51, 0.1);
+        }
+
+        .empty {
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .empty__icon { font-size: 28px; margin-bottom: 10px; opacity: 0.5; }
+
+        /* Banner */
+        .banner {
+            background-color: rgba(144, 174, 173, 0.12);
+            border: 1px solid rgba(144, 174, 173, 0.25);
+            border-radius: var(--radius);
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            color: var(--teal);
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Spinner */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 6px;
+        }
+
+        @media (max-width: 480px) {
+            .stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .stat__value { font-size: 28px; }
+            .stat { padding: 14px 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <h1 class="header__title">
-                <span>📰</span>
-                <span>Newsletter Dashboard</span>
-            </h1>
-            <form method="POST" action="/trigger" style="margin: 0;">
-                <button type="submit" class="btn btn--trigger">
-                    Send Now
-                </button>
+<div class="container">
+
+    <header class="header">
+        <div class="header__title">Newsletter Dashboard</div>
+        <form method="POST" action="/trigger" style="margin:0">
+            <button type="submit" class="btn-send" id="send-btn">Send Now</button>
+        </form>
+    </header>
+
+    {% if request.args.get('triggered') %}
+    <div class="banner">✓ Newsletter triggered — check GitHub Actions for progress.</div>
+    {% endif %}
+
+    <!-- Nav -->
+    <nav class="nav">
+        <button class="nav__tab is-active" data-page="dashboard">Dashboard</button>
+        <button class="nav__tab" data-page="queue">
+            Queue <span class="nav__badge">{{ pending|length }}</span>
+        </button>
+        <button class="nav__tab" data-page="sent">
+            Sent <span class="nav__badge">{{ sent|length }}</span>
+        </button>
+    </nav>
+
+    <!-- Dashboard Page -->
+    <div class="page is-active" id="page-dashboard">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat__value">{{ pending|length }}</div>
+                <div class="stat__label">Remaining</div>
+            </div>
+            <div class="stat">
+                <div class="stat__value">{{ sent|length }}</div>
+                <div class="stat__label">Sent</div>
+            </div>
+            <div class="stat">
+                <div class="stat__value">{{ (pending|length) + (sent|length) }}</div>
+                <div class="stat__label">Total</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card__title">Add Topics</div>
+            <form method="POST" action="/topics/add" id="add-form">
+                <textarea
+                    class="textarea"
+                    name="topics"
+                    id="topics-textarea"
+                    placeholder="One topic per line..."
+                    rows="4"
+                ></textarea>
+                <button type="submit" class="btn-primary">Add to Queue</button>
             </form>
-        </header>
-
-        <!-- Stats Row -->
-        <div class="stats-row">
-            <div class="stat-card">
-                <div class="stat-card__value">{{ pending|length }}</div>
-                <div class="stat-card__label">Topics Remaining</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card__value">{{ sent|length }}</div>
-                <div class="stat-card__label">Topics Sent</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card__value">{{ (pending|length) + (sent|length) }}</div>
-                <div class="stat-card__label">Total Topics</div>
-            </div>
-        </div>
-
-        <!-- Success Banner -->
-        {% if request.args.get('triggered') %}
-        <div class="banner">
-            <div class="banner__icon">✓</div>
-            <div>Newsletter triggered — check your GitHub Actions for progress.</div>
-        </div>
-        {% endif %}
-
-        <!-- Main Content: Two Columns -->
-        <div class="content">
-            <!-- Left: Queue Section -->
-            <section class="section">
-                <div class="section__header">
-                    <h2 class="section__title">Queue</h2>
-                    <div class="section__badge">{{ pending|length }}</div>
-                </div>
-
-                {% if pending|length > 0 %}
-                <div class="topic-list">
-                    {% for topic in pending %}
-                    <div class="topic-row">
-                        <div class="topic-row__text">{{ topic }}</div>
-                        <form method="POST" action="/topics/delete" style="margin: 0; display: flex;">
-                            <input type="hidden" name="topic" value="{{ topic }}">
-                            <button type="submit" class="topic-row__delete" title="Delete topic">×</button>
-                        </form>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% else %}
-                <div class="empty-state">
-                    <div class="empty-state__icon">📭</div>
-                    <div>No topics remaining — add some below</div>
-                </div>
-                {% endif %}
-
-                <div class="input-group">
-                    <form method="POST" action="/topics/add" id="add-form" style="display: flex; flex-direction: column; gap: 12px;">
-                        <textarea
-                            class="textarea"
-                            name="topics"
-                            id="topics-textarea"
-                            placeholder="One topic per line..."
-                            rows="4"
-                        ></textarea>
-                        <button type="submit" class="btn btn--primary">Add Topics</button>
-                    </form>
-                    <button class="btn btn--ai" id="suggest-btn">✦ Suggest with AI</button>
-                    <div class="suggestions" id="suggestions">
-                        <div class="suggestions__label">Click to add to queue</div>
-                        <div class="suggestions__chips" id="suggestions-chips"></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Right: Sent History Section -->
-            <section class="section">
-                <div class="section__header">
-                    <h2 class="section__title">Sent</h2>
-                    <div class="section__badge">{{ sent|length }}</div>
-                </div>
-
-                {% if sent|length > 0 %}
-                <div class="topic-list">
-                    {% for topic in sent|reverse %}
-                    <div class="topic-row" style="color: var(--text-muted);">
-                        <div style="display: flex; align-items: center; width: 100%;">
-                            <div class="topic-row__icon">✓</div>
-                            <div class="topic-row__text">{{ topic }}</div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% else %}
-                <div class="empty-state">
-                    <div class="empty-state__icon">✉️</div>
-                    <div>Nothing sent yet</div>
-                </div>
-                {% endif %}
-            </section>
+            <button class="btn-ai" id="suggest-btn">✦ Suggest with AI</button>
+            <div class="chips" id="chips"></div>
         </div>
     </div>
 
-    <script>
-        /* === FORM HANDLING === */
-        document.addEventListener('DOMContentLoaded', function() {
-            const triggerBtn = document.querySelector('.btn--trigger');
+    <!-- Queue Page -->
+    <div class="page" id="page-queue">
+        {% if pending %}
+        <div class="topic-list">
+            {% for topic in pending %}
+            <div class="topic-row">
+                <div class="topic-row__text">{{ topic }}</div>
+                <form method="POST" action="/topics/delete" style="margin:0;display:flex;">
+                    <input type="hidden" name="topic" value="{{ topic }}">
+                    <button type="submit" class="topic-row__delete" title="Delete">×</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty">
+            <div class="empty__icon">📭</div>
+            No topics in queue — add some from the Dashboard.
+        </div>
+        {% endif %}
+    </div>
 
-            // Add loading state to trigger button
-            document.querySelector('form[action="/trigger"]').addEventListener('submit', function(e) {
-                triggerBtn.disabled = true;
-                const originalText = triggerBtn.textContent;
-                triggerBtn.innerHTML = '<span class="spinner"></span>Sending...';
-                triggerBtn.classList.add('is-loading');
-            });
+    <!-- Sent Page -->
+    <div class="page" id="page-sent">
+        {% if sent %}
+        <div class="topic-list">
+            {% for topic in sent|reverse %}
+            <div class="topic-row topic-row--sent">
+                <span class="topic-row__check">✓</span>
+                <div class="topic-row__text">{{ topic }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty">
+            <div class="empty__icon">✉️</div>
+            Nothing sent yet.
+        </div>
+        {% endif %}
+    </div>
 
-            // Add loading state to add topics form
-            const addForm = document.querySelector('form[action="/topics/add"]');
-            if (addForm) {
-                const addBtn = addForm.querySelector('.btn--primary');
-                addForm.addEventListener('submit', function(e) {
-                    const textarea = addForm.querySelector('textarea');
-                    if (!textarea.value.trim()) {
-                        e.preventDefault();
-                        return;
-                    }
-                    addBtn.disabled = true;
-                    addBtn.innerHTML = '<span class="spinner"></span>Adding...';
-                });
-            }
+</div>
 
-            // Confirm delete action
-            const deleteButtons = document.querySelectorAll('.topic-row__delete');
-            deleteButtons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    if (!confirm('Delete this topic?')) {
-                        e.preventDefault();
-                    }
-                });
-            });
+<script>
+    // Tab navigation
+    const tabs = document.querySelectorAll('.nav__tab');
+    const pages = document.querySelectorAll('.page');
 
-            // AI suggestions
-            const suggestBtn = document.getElementById('suggest-btn');
-            const suggestionsEl = document.getElementById('suggestions');
-            const chipsEl = document.getElementById('suggestions-chips');
-            const textarea = document.getElementById('topics-textarea');
-
-            suggestBtn.addEventListener('click', async function() {
-                suggestBtn.disabled = true;
-                suggestBtn.innerHTML = '<span class="spinner"></span> Thinking...';
-                suggestBtn.classList.add('is-loading');
-
-                try {
-                    const resp = await fetch('/suggest', { method: 'POST' });
-                    const data = await resp.json();
-
-                    chipsEl.innerHTML = '';
-                    data.suggestions.forEach(topic => {
-                        const chip = document.createElement('button');
-                        chip.className = 'chip';
-                        chip.textContent = topic;
-                        chip.addEventListener('click', function() {
-                            const current = textarea.value.trim();
-                            textarea.value = current ? current + '\n' + topic : topic;
-                            chip.className = 'chip is-added';
-                            chip.textContent = '✓ ' + topic;
-                        });
-                        chipsEl.appendChild(chip);
-                    });
-
-                    suggestionsEl.classList.add('is-visible');
-                } catch (e) {
-                    alert('Failed to get suggestions. Try again.');
-                } finally {
-                    suggestBtn.disabled = false;
-                    suggestBtn.innerHTML = '✦ Suggest with AI';
-                    suggestBtn.classList.remove('is-loading');
-                }
-            });
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('is-active'));
+            pages.forEach(p => p.classList.remove('is-active'));
+            tab.classList.add('is-active');
+            document.getElementById('page-' + tab.dataset.page).classList.add('is-active');
         });
-    </script>
+    });
+
+    // Send button loading
+    document.querySelector('form[action="/trigger"]').addEventListener('submit', function() {
+        const btn = document.getElementById('send-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span>Sending...';
+    });
+
+    // Add form loading
+    document.getElementById('add-form').addEventListener('submit', function(e) {
+        const textarea = document.getElementById('topics-textarea');
+        if (!textarea.value.trim()) { e.preventDefault(); return; }
+        const btn = this.querySelector('.btn-primary');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner"></span>Adding...';
+    });
+
+    // AI suggestions
+    document.getElementById('suggest-btn').addEventListener('click', async function() {
+        this.disabled = true;
+        this.innerHTML = '<span class="spinner"></span>Thinking...';
+        const chipsEl = document.getElementById('chips');
+        const textarea = document.getElementById('topics-textarea');
+
+        try {
+            const resp = await fetch('/suggest', { method: 'POST' });
+            const data = await resp.json();
+            chipsEl.innerHTML = '';
+            data.suggestions.forEach(topic => {
+                const chip = document.createElement('button');
+                chip.className = 'chip';
+                chip.textContent = topic;
+                chip.addEventListener('click', function() {
+                    const current = textarea.value.trim();
+                    textarea.value = current ? current + '\n' + topic : topic;
+                    chip.className = 'chip is-added';
+                    chip.textContent = '✓ ' + topic;
+                });
+                chipsEl.appendChild(chip);
+            });
+            chipsEl.classList.add('is-visible');
+        } catch (e) {
+            alert('Failed to get suggestions. Try again.');
+        } finally {
+            this.disabled = false;
+            this.innerHTML = '✦ Suggest with AI';
+        }
+    });
+</script>
 </body>
 </html>
