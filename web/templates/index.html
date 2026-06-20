@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === RESET & BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #0a0a0f;
+            color: #e0e0e6;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* === DESIGN TOKENS === */
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #13131a;
+            --bg-hover: #1a1a24;
+            --border-color: #1e1e2e;
+            --accent-primary: #7c3aed;
+            --accent-hover: #6d28d9;
+            --accent-light: #8b5cf6;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a8;
+            --text-muted: #777780;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+            --transition-fast: 150ms ease;
+            --transition-normal: 250ms ease;
+            --radius: 12px;
+        }
+
+        /* === LAYOUT === */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 0;
+            gap: 20px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .header__title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+            animation: fadeIn 0.8s ease-out 0.15s both;
+        }
+
+        .stat-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .stat-card__value {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-card__label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .banner {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #a7f3d0;
+            font-size: 14px;
+            font-weight: 500;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .banner__icon {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            flex: 1;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+
+        /* === SECTIONS === */
+        .section {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .section__header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section__title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .section__badge {
+            background-color: var(--accent-primary);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 6px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .topic-list {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .topic-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .topic-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .topic-list::-webkit-scrollbar-thumb {
+            background-color: var(--border-color);
+            border-radius: 3px;
+        }
+
+        .topic-list::-webkit-scrollbar-thumb:hover {
+            background-color: var(--accent-primary);
+        }
+
+        .topic-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 14px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: all var(--transition-fast);
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .topic-row:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--accent-primary);
+        }
+
+        .topic-row__text {
+            flex: 1;
+            min-width: 0;
+            word-break: break-word;
+            padding-right: 12px;
+        }
+
+        .topic-row__icon {
+            color: var(--text-muted);
+            margin-right: 8px;
+            flex-shrink: 0;
+            font-size: 13px;
+        }
+
+        .topic-row__delete {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all var(--transition-fast);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .topic-row__delete:hover {
+            color: var(--error-color);
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+
+        .topic-row__delete:active {
+            transform: scale(0.95);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .empty-state__icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        /* === TEXTAREA & INPUTS === */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px 14px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.5;
+            resize: vertical;
+            transition: all var(--transition-fast);
+        }
+
+        .textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.1);
+        }
+
+        /* === BUTTONS === */
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: inherit;
+            letter-spacing: -0.01em;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+
+        .btn--primary {
+            background-color: var(--accent-primary);
+            color: white;
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 14px;
+        }
+
+        .btn--primary:hover {
+            background-color: var(--accent-hover);
+            box-shadow: 0 8px 16px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn--primary:active {
+            background-color: #5b21b6;
+        }
+
+        .btn--trigger {
+            background-color: var(--accent-primary);
+            color: white;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn--trigger:hover {
+            background-color: var(--accent-hover);
+            box-shadow: 0 0 24px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn--trigger:hover::before {
+            animation: pulse-ring 1.5s ease-out infinite;
+        }
+
+        .btn--trigger::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            pointer-events: none;
+        }
+
+        .btn--trigger:active {
+            background-color: #5b21b6;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .header {
+                flex-direction: column;
+                padding: 24px 0;
+                gap: 16px;
+            }
+
+            .header__title {
+                font-size: 20px;
+                width: 100%;
+            }
+
+            .btn--trigger {
+                width: 100%;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 24px;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .topic-list {
+                max-height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header__title {
+                font-size: 18px;
+            }
+
+            .stat-card__value {
+                font-size: 36px;
+            }
+
+            .section {
+                padding: 16px;
+            }
+
+            .section__title {
+                font-size: 15px;
+            }
+
+            .topic-row {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+
+            .textarea {
+                min-height: 80px;
+                font-size: 13px;
+            }
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .is-loading .spinner {
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header__title">
+                <span>📰</span>
+                <span>Newsletter Dashboard</span>
+            </h1>
+            <form method="POST" action="/trigger" style="margin: 0;">
+                <button type="submit" class="btn btn--trigger">
+                    Send Now
+                </button>
+            </form>
+        </header>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-card__value">{{ pending|length }}</div>
+                <div class="stat-card__label">Topics Remaining</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card__value">{{ sent|length }}</div>
+                <div class="stat-card__label">Topics Sent</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card__value">{{ (pending|length) + (sent|length) }}</div>
+                <div class="stat-card__label">Total Topics</div>
+            </div>
+        </div>
+
+        <!-- Success Banner -->
+        {% if request.args.get('triggered') %}
+        <div class="banner">
+            <div class="banner__icon">✓</div>
+            <div>Newsletter triggered — check your GitHub Actions for progress.</div>
+        </div>
+        {% endif %}
+
+        <!-- Main Content: Two Columns -->
+        <div class="content">
+            <!-- Left: Queue Section -->
+            <section class="section">
+                <div class="section__header">
+                    <h2 class="section__title">Queue</h2>
+                    <div class="section__badge">{{ pending|length }}</div>
+                </div>
+
+                {% if pending|length > 0 %}
+                <div class="topic-list">
+                    {% for topic in pending %}
+                    <div class="topic-row">
+                        <div class="topic-row__text">{{ topic }}</div>
+                        <form method="POST" action="/topics/delete" style="margin: 0; display: flex;">
+                            <input type="hidden" name="topic" value="{{ topic }}">
+                            <button type="submit" class="topic-row__delete" title="Delete topic">×</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="empty-state">
+                    <div class="empty-state__icon">📭</div>
+                    <div>No topics remaining — add some below</div>
+                </div>
+                {% endif %}
+
+                <div class="input-group">
+                    <form method="POST" action="/topics/add" style="display: flex; flex-direction: column; gap: 12px;">
+                        <textarea
+                            class="textarea"
+                            name="topics"
+                            placeholder="One topic per line..."
+                            rows="4"
+                        ></textarea>
+                        <button type="submit" class="btn btn--primary">Add Topics</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Right: Sent History Section -->
+            <section class="section">
+                <div class="section__header">
+                    <h2 class="section__title">Sent</h2>
+                    <div class="section__badge">{{ sent|length }}</div>
+                </div>
+
+                {% if sent|length > 0 %}
+                <div class="topic-list">
+                    {% for topic in sent|reverse %}
+                    <div class="topic-row" style="color: var(--text-muted);">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <div class="topic-row__icon">✓</div>
+                            <div class="topic-row__text">{{ topic }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="empty-state">
+                    <div class="empty-state__icon">✉️</div>
+                    <div>Nothing sent yet</div>
+                </div>
+                {% endif %}
+            </section>
+        </div>
+    </div>
+
+    <script>
+        /* === FORM HANDLING === */
+        document.addEventListener('DOMContentLoaded', function() {
+            const triggerBtn = document.querySelector('.btn--trigger');
+
+            // Add loading state to trigger button
+            document.querySelector('form[action="/trigger"]').addEventListener('submit', function(e) {
+                triggerBtn.disabled = true;
+                const originalText = triggerBtn.textContent;
+                triggerBtn.innerHTML = '<span class="spinner"></span>Sending...';
+                triggerBtn.classList.add('is-loading');
+            });
+
+            // Add loading state to add topics form
+            const addForm = document.querySelector('form[action="/topics/add"]');
+            if (addForm) {
+                const addBtn = addForm.querySelector('.btn--primary');
+                addForm.addEventListener('submit', function(e) {
+                    const textarea = addForm.querySelector('textarea');
+                    if (!textarea.value.trim()) {
+                        e.preventDefault();
+                        return;
+                    }
+                    addBtn.disabled = true;
+                    addBtn.innerHTML = '<span class="spinner"></span>Adding...';
+                });
+            }
+
+            // Confirm delete action
+            const deleteButtons = document.querySelectorAll('.topic-row__delete');
+            deleteButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    if (!confirm('Delete this topic?')) {
+                        e.preventDefault();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
