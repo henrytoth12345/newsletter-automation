@@ -15,7 +15,7 @@ import re
 import sys
 from pathlib import Path
 
-LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo.png"
+LOGO_URL = "https://raw.githubusercontent.com/henrytoth12345/newsletter-automation/main/assets/logo.png"
 ACCENT = "#e8232a"
 
 
@@ -24,13 +24,6 @@ def slugify(text: str) -> str:
     text = re.sub(r"[^\w\s-]", "", text)
     text = re.sub(r"[\s_-]+", "_", text)
     return text[:50]
-
-
-def get_logo_data_uri() -> str | None:
-    if LOGO_PATH.exists():
-        data = base64.b64encode(LOGO_PATH.read_bytes()).decode()
-        return f"data:image/png;base64,{data}"
-    return None
 
 
 def find_section_infographic(images_dir: str, section_index: int, slug: str) -> str | None:
@@ -63,22 +56,13 @@ def body_to_paragraphs(body: str) -> str:
 
 def render(research: dict, images_dir: str) -> str:
     slug = slugify(research["topic"])
-    logo_uri = get_logo_data_uri()
     sections = research.get("sections", [])
 
     # Logo header
-    if logo_uri:
-        header_html = f'''
-        <div style="text-align:center;padding:32px 0 16px;">
-          <img src="{logo_uri}" alt="Newsletter" style="max-width:220px;height:auto;display:inline-block;">
-        </div>'''
-    else:
-        header_html = f'''
-        <div style="text-align:center;padding:32px 0 16px;">
-          <div style="font-family:Georgia,serif;font-size:36px;font-weight:900;color:#1a1a1a;letter-spacing:-1px;">
-            {research.get("topic", "Newsletter")}
-          </div>
-        </div>'''
+    header_html = f'''
+    <div style="text-align:center;padding:32px 0 16px;">
+      <img src="{LOGO_URL}" alt="Newsletter" style="max-width:220px;height:auto;display:inline-block;">
+    </div>'''
 
     # Divider
     divider = f'<div style="border-top:3px solid {ACCENT};margin:0 0 24px 0;"></div>'
