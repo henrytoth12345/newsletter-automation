@@ -1,0 +1,198 @@
+# Newsletter topic queue
+# Lines starting with # are ignored
+# [SENT] prefix means the topic has already been sent
+# Run with: python run_newsletter.py --from-queue
+
+# --- FILMMAKING CRAFT ---
+[SENT] The Art of Cinematography: How Top DPs Light a Scene
+Directing Actors: Techniques the Best Directors Use on Set
+Film Editing Secrets: How Editors Shape Story and Emotion
+Production Design: Building Worlds on a Budget
+The Role of the First AD: Running a Film Set
+Sound Design in Film: The Invisible Art That Controls How You Feel
+Score vs. Soundtrack: How Music Shapes a Film
+The Evolution of the Steadicam: From Rocky to Modern Cinema
+Practical Effects vs. CGI: When Each Approach Wins
+Color Grading: How the Look of a Film Gets Made
+The Art of the Shot List: How Directors Pre-Visualize Films
+Lenses and Storytelling: How Focal Length Changes Everything
+Low-Budget Filmmaking: How Indie Directors Do More With Less
+The 180-Degree Rule and When Great Directors Break It
+Blocking and Movement: How Directors Stage Scenes
+
+# --- FILM INDUSTRY NEWS & BUSINESS ---
+Box Office Trends: What's Actually Making Money in 2025
+The Streaming Wars: Where Netflix, Disney+, and Apple TV+ Stand Today
+How Hollywood Strikes Changed the Industry Forever
+The Rise of A24: How an Indie Studio Changed What Gets Made
+Film Festival Circuit: How Sundance, Cannes, and TIFF Shape Releases
+The Death of the Mid-Budget Film: What Happened and What's Next
+How Movie Marketing Has Changed in the Social Media Era
+The Global Box Office: How International Markets Drive Hollywood Decisions
+Film Financing in 2025: How Movies Actually Get Funded
+The Future of Movie Theaters: Premium Formats and the Fight for Audiences
+How Streaming Algorithms Decide What Gets Made
+The Rise of International Cinema: Korean, Indian, and Spanish Film Goes Global
+Hollywood and AI: How the Industry Is Responding to New Technology
+The Hidden Costs of Making a Movie: What Budgets Don't Show
+How Independent Films Get Distribution Deals
+
+# --- DIRECTORS & FILMMAKERS ---
+Christopher Nolan's Filmmaking Philosophy: Practical Over Digital
+How Greta Gerwig Went From Actress to Oscar-Winning Director
+The Coen Brothers' Approach to Story, Character, and Tone
+Denis Villeneuve and the Return of the Adult Sci-Fi Epic
+Emerging Directors to Watch: The Next Wave of Filmmakers
+How Female Directors Are Reshaping Hollywood
+The New Wave of African Cinema: Directors Changing the Global Conversation
+How Jordan Peele Built a New Genre of Horror
+The Cinematographers Who Define the Visual Language of Modern Film
+Documentary Filmmakers Who Changed How We See the World
+
+# --- TECHNOLOGY & INNOVATION ---
+How LED Volume Stages Are Replacing Location Shoots
+The State of Virtual Production in 2025
+AI Tools Filmmakers Are Actually Using on Set
+How Drones Changed Aerial Cinematography
+The Future of 3D: Why It Keeps Coming Back
+Camera Technology in 2025: What's New and What Matters
+How Streaming Changed Post-Production Workflows
+The Rise of Mobile Filmmaking: Shooting Features on iPhone
+Digital vs. Film: Why Some Directors Still Shoot on Celluloid
+How Video Games Are Influencing Cinematic Visual Language
+
+# --- GENRES & STORYTELLING ---
+The Superhero Fatigue Debate: What the Data Actually Shows
+Why Horror Is the Most Profitable Genre in Hollywood
+The Documentary Boom: Why Non-Fiction Film Is Having a Moment
+The State of the Western: A Genre That Won't Die
+How Romantic Comedies Are Making a Comeback
+True Crime Documentaries: Why We Can't Stop Watching
+The Rise of the A24 Horror Aesthetic
+Anthology Films and Series: Storytelling Without Sequels
+How Animation Became the Most Ambitious Storytelling Format
+The Prestige TV Effect: How Television Changed Movie Storytelling
+
+# --- CAREERS & INDUSTRY LIFE ---
+How to Break Into the Film Industry in 2025
+What Film School Actually Teaches You (And What It Doesn't)
+The Life of a Film Crew: What Each Department Actually Does
+How Casting Directors Shape the Films We Love
+Agents, Managers, and Lawyers: How Hollywood Representation Works
+The Guild System: How Unions Protect (and Shape) Hollywood
+Working as a Screenwriter: The Reality Behind the Glamour
+How to Get Your Short Film Noticed at Festivals
+The Cinematographer's Career Path: From AC to DP
+What Producers Actually Do: The Most Misunderstood Job in Film
+
+# --- FILMMAKING CRAFT (CONTINUED) ---
+The Art of the Close-Up: When and Why Directors Move In Tight
+Natural Light Cinematography: How to Shoot Without Artificial Lighting
+The Jump Cut: Why Godard's Mistake Became a Filmmaking Tool
+Aspect Ratios and Storytelling: Why the Frame Shape Matters
+How Directors Use Silence as a Dramatic Tool
+The Tracking Shot: Cinema's Most Demanding and Rewarding Technique
+Composition Rules Every Filmmaker Should Know (And When to Break Them)
+How to Direct a Scene With No Dialogue
+The Art of the Montage: Eisenstein's Legacy in Modern Film
+Improvisation on Set: How Directors Work With Actors Who Go Off Script
+How Sound Mixers Shape the Emotional Experience of a Film
+The Art of the Reaction Shot: Why Listening Is More Powerful Than Speaking
+Continuity Editing: The Rules That Keep Audiences Inside the Story
+How Directors Build Tension Without Action
+The Magic Hour: Why Filmmakers Chase That 20-Minute Window of Light
+Handheld vs. Tripod: What Camera Movement Says About a Scene
+How to Use Weather as a Storytelling Element
+The Craft of the Opening Scene: How Great Films Begin
+Writing Visual Storytelling: Screenwriting Techniques That Translate to Screen
+How Directors Rehearse: Techniques From the World's Best Filmmakers
+
+# --- FILM INDUSTRY NEWS & BUSINESS (CONTINUED) ---
+How TikTok Is Changing Movie Marketing Forever
+The Oscar Campaign: How Films Win (and Buy) Awards
+Netflix Original Films vs. Theatrical Releases: What the Data Shows
+The Decline of the Star System: When A-List Names Stopped Opening Movies
+How China's Box Office Shapes Hollywood Decisions
+The Rise of the Podcast-to-Film Pipeline
+IMAX and Premium Large Format: The Business Behind Bigger Screens
+How Film Tax Incentives Move Productions Around the World
+The Acquisitions Game: How Films Get Bought at Festivals
+Studio Consolidation: What Fewer Big Players Means for Filmmakers
+How Sequel Culture Took Over Hollywood and What's Pushing Back
+The Cannes Market: Where Films Are Actually Bought and Sold
+How Reality TV Graduates Are Crossing Over Into Film
+The Independent Spirit Awards vs. the Oscars: Two Different Hollywoods
+Prestige Limited Series vs. Feature Films: Where the Talent Is Going
+How Merchandise Revenue Shapes Which Films Get Greenlit
+The Rotten Tomatoes Effect: How Review Aggregators Changed Opening Weekends
+Film Insurance: The Unglamorous Business That Makes Movies Possible
+How Hollywood Handles Sequels That Nobody Asked For
+The Economics of a Film Festival: What Sundance Actually Costs to Run
+
+# --- DIRECTORS & FILMMAKERS (CONTINUED) ---
+Martin Scorsese's Career in Three Acts: From Mean Streets to Killers of the Flower Moon
+How Ari Aster Builds Dread: The Horror Director's Craft
+Steven Spielberg's Directing Playbook: Techniques He's Used for 50 Years
+The Films of Wong Kar-wai: Mood, Memory, and Visual Poetry
+How Spike Lee Uses Color and Music as Political Tools
+Alfonso Cuarón's Long Takes: Technique and Intention Behind the Camera
+Wes Anderson's Visual Grammar: Symmetry, Palette, and Deadpan
+Kathryn Bigelow: How She Directs Action Better Than Almost Anyone
+The Films of Bong Joon-ho: Class, Genre, and Global Storytelling
+How Paul Thomas Anderson Finds His Stories
+The Dardenne Brothers: European Social Realism and Its Lessons for Indie Film
+How James Cameron Pushes Technology to Serve Story
+The Rise of the Actor-Director: Performers Who Stepped Behind the Camera
+How Terrence Malick Changed What a Film Could Feel Like
+Female Cinematographers Redefining the Visual Language of Cinema
+The New Latin American Directors Hollywood Needs to Know
+How Horror Directors Use Trauma as Their Source Material
+The Directors Who Built Cult Followings Outside the Studio System
+How Mike Leigh Works: Improvisation, Rehearsal, and Collaboration
+The Legacy of Stanley Kubrick: What Today's Directors Still Learn From Him
+
+# --- TECHNOLOGY & INNOVATION (CONTINUED) ---
+The History of the Dolly: How Camera Movement Evolved Over 100 Years
+How Modern VFX Supervisors Work With Directors on Set
+The Rise of AI-Assisted Editing: What It Can and Can't Do
+Remote Collaboration in Post-Production: How Studios Work Across Time Zones
+The Science of Film Color: How Colorists Use Curves, Wheels, and Data
+How Motion Capture Has Evolved From Gollum to Today
+The Audio Post Pipeline: From Production Sound to Final Mix
+How Previsualization Software Changed Action Filmmaking
+The Codecs and Containers Filmmakers Actually Need to Understand
+Shooting RAW vs. Baked-In Looks: A Practical Guide for DPs
+How Streaming Services Deliver 4K HDR at Scale
+The Role of the Data Wrangler: The Most Important Job Nobody Talks About
+How Virtual Scouting Is Replacing Location Trips
+The Evolution of the Film Camera: From Mitchell to ARRI to RED
+Spatial Audio in Cinema: How Dolby Atmos Changed Sound Design
+
+# --- GENRES & STORYTELLING (CONTINUED) ---
+The Rise of the Elevated Horror Genre and What It Means
+Why Biopics Are Having a Renaissance and What Makes Them Work
+The Action Movie in Crisis: What Audiences Want Now
+How the Road Movie Endures as America's Defining Genre
+The Coming-of-Age Film: Why It Stays the Most Universal Genre
+Body Horror: From Cronenberg to Today's New Wave
+The Heist Film Formula: Why It Always Works
+How Sci-Fi Predicts the Present: Films That Got It Right
+The Courtroom Drama Resurgence: Law, Truth, and Theatrics on Screen
+Films That Broke the Fourth Wall: When Movies Talk to the Audience
+Why Disaster Films Are Having a Cultural Moment
+The Spy Thriller Evolution: From Bond to Modern Moral Ambiguity
+Slow Cinema: The Art of the Film That Refuses to Rush
+Found Footage Films: Why the Format Won't Die
+The Mumblecore Legacy: How Lo-Fi Indie Film Shaped a Generation of Filmmakers
+
+# --- CAREERS & INDUSTRY LIFE (CONTINUED) ---
+The Script Coverage System: How Your Screenplay Gets Read in Hollywood
+How to Network in the Film Industry Without Being Annoying
+What Line Producers Do: The People Who Actually Make Budgets Work
+The Grip and Electric Departments: The Physical Foundation of Every Film Set
+How to Build a Reel That Actually Gets You Work
+The Reality of Working as a Set PA: Hours, Pay, and Career Path
+How Location Managers Find and Secure the Places Films Are Shot
+Stunt Coordinators: The Craft Behind Safe and Spectacular Action
+The Make-Up and Hair Department: Character Building From the Outside In
+How Visual Effects Artists Build Careers in a Changing Industry
