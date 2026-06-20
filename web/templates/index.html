@@ -332,21 +332,6 @@
 
         .empty__icon { font-size: 28px; margin-bottom: 10px; opacity: 0.5; }
 
-        /* Banner */
-        .banner {
-            background-color: rgba(144, 174, 173, 0.12);
-            border: 1px solid rgba(144, 174, 173, 0.25);
-            border-radius: var(--radius);
-            padding: 14px 18px;
-            margin-bottom: 20px;
-            color: var(--teal);
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
         /* Spinner */
         @keyframes spin {
             from { transform: rotate(0deg); }
@@ -380,10 +365,6 @@
             <button type="submit" class="btn-send" id="send-btn">Send Now</button>
         </form>
     </header>
-
-    {% if request.args.get('triggered') %}
-    <div class="banner">✓ Newsletter triggered — check GitHub Actions for progress.</div>
-    {% endif %}
 
     <!-- Nav -->
     <nav class="nav">
