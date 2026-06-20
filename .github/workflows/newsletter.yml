@@ -2,7 +2,7 @@ name: Daily Newsletter
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # 7am CDT / 12pm UTC
+    - cron: '0 * * * *'  # every hour
   workflow_dispatch:       # allows manual trigger from GitHub UI
 
 permissions:
