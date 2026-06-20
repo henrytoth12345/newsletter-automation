@@ -523,6 +523,69 @@
         .is-loading .spinner {
             margin-right: 6px;
         }
+
+        .btn--ai {
+            background-color: transparent;
+            color: var(--accent-light);
+            border: 1px solid var(--accent-primary);
+            width: 100%;
+            padding: 10px 16px;
+            font-size: 13px;
+        }
+
+        .btn--ai:hover {
+            background-color: rgba(124, 58, 237, 0.1);
+        }
+
+        .suggestions {
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .suggestions.is-visible {
+            display: flex;
+        }
+
+        .suggestions__label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .suggestions__chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip {
+            background-color: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            color: var(--accent-light);
+            font-size: 13px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-family: inherit;
+        }
+
+        .chip:hover {
+            background-color: rgba(124, 58, 237, 0.3);
+            border-color: var(--accent-primary);
+            color: white;
+        }
+
+        .chip.is-added {
+            background-color: rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: var(--success-color);
+            cursor: default;
+        }
     </style>
 </head>
 <body>
@@ -593,15 +656,21 @@
                 {% endif %}
 
                 <div class="input-group">
-                    <form method="POST" action="/topics/add" style="display: flex; flex-direction: column; gap: 12px;">
+                    <form method="POST" action="/topics/add" id="add-form" style="display: flex; flex-direction: column; gap: 12px;">
                         <textarea
                             class="textarea"
                             name="topics"
+                            id="topics-textarea"
                             placeholder="One topic per line..."
                             rows="4"
                         ></textarea>
                         <button type="submit" class="btn btn--primary">Add Topics</button>
                     </form>
+                    <button class="btn btn--ai" id="suggest-btn">✦ Suggest with AI</button>
+                    <div class="suggestions" id="suggestions">
+                        <div class="suggestions__label">Click to add to queue</div>
+                        <div class="suggestions__chips" id="suggestions-chips"></div>
+                    </div>
                 </div>
             </section>
 
@@ -669,6 +738,45 @@
                         e.preventDefault();
                     }
                 });
+            });
+
+            // AI suggestions
+            const suggestBtn = document.getElementById('suggest-btn');
+            const suggestionsEl = document.getElementById('suggestions');
+            const chipsEl = document.getElementById('suggestions-chips');
+            const textarea = document.getElementById('topics-textarea');
+
+            suggestBtn.addEventListener('click', async function() {
+                suggestBtn.disabled = true;
+                suggestBtn.innerHTML = '<span class="spinner"></span> Thinking...';
+                suggestBtn.classList.add('is-loading');
+
+                try {
+                    const resp = await fetch('/suggest', { method: 'POST' });
+                    const data = await resp.json();
+
+                    chipsEl.innerHTML = '';
+                    data.suggestions.forEach(topic => {
+                        const chip = document.createElement('button');
+                        chip.className = 'chip';
+                        chip.textContent = topic;
+                        chip.addEventListener('click', function() {
+                            const current = textarea.value.trim();
+                            textarea.value = current ? current + '\n' + topic : topic;
+                            chip.className = 'chip is-added';
+                            chip.textContent = '✓ ' + topic;
+                        });
+                        chipsEl.appendChild(chip);
+                    });
+
+                    suggestionsEl.classList.add('is-visible');
+                } catch (e) {
+                    alert('Failed to get suggestions. Try again.');
+                } finally {
+                    suggestBtn.disabled = false;
+                    suggestBtn.innerHTML = '✦ Suggest with AI';
+                    suggestBtn.classList.remove('is-loading');
+                }
             });
         });
     </script>

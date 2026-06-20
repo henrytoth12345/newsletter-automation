@@ -1,9 +1,10 @@
 import base64
+import json
 import os
 
 import requests
 from dotenv import load_dotenv
-from flask import Flask, redirect, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", ".env"))
 
@@ -11,6 +12,7 @@ app = Flask(__name__)
 
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 GITHUB_REPO = os.getenv("GITHUB_REPO")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 TOPICS_FILE = "topics.txt"
 
 
@@ -68,7 +70,6 @@ def add_topics():
     new_lines = [l.strip() for l in raw.splitlines() if l.strip()]
     content, sha = get_topics_file()
 
-    # Insert new topics after the header comment block, so they're next in queue
     lines = content.splitlines()
     insert_at = 0
     for i, line in enumerate(lines):
@@ -96,6 +97,41 @@ def trigger():
     url = f"https://api.github.com/repos/{GITHUB_REPO}/actions/workflows/newsletter.yml/dispatches"
     requests.post(url, headers=gh_headers(), json={"ref": "main"}).raise_for_status()
     return redirect("/?triggered=1")
+
+
+@app.route("/suggest", methods=["POST"])
+def suggest():
+    content, _ = get_topics_file()
+    pending, sent = parse_topics(content)
+    existing = (pending + sent)[:40]
+    existing_text = "\n".join(f"- {t}" for t in existing)
+
+    prompt = f"""Here are existing newsletter topics about filmmaking and the film industry:
+
+{existing_text}
+
+Suggest 10 new newsletter topic ideas that are different from the ones above but fit the same theme.
+Each topic should be a specific, interesting angle — not generic.
+Return ONLY a JSON array of 10 strings, no explanation. Example format:
+["Topic one", "Topic two", ...]"""
+
+    resp = requests.post(
+        "https://api.groq.com/openai/v1/chat/completions",
+        headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
+        json={
+            "model": "llama-3.3-70b-versatile",
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.9,
+        },
+        timeout=30,
+    )
+    resp.raise_for_status()
+    text = resp.json()["choices"][0]["message"]["content"].strip()
+
+    start = text.find("[")
+    end = text.rfind("]") + 1
+    suggestions = json.loads(text[start:end])
+    return jsonify(suggestions=suggestions)
 
 
 if __name__ == "__main__":
