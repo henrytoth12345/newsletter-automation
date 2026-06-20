@@ -8,7 +8,7 @@
 [SENT] The Art of Cinematography: How Top DPs Light a Scene
 [SENT] Directing Actors: Techniques the Best Directors Use on Set
 [SENT] Film Editing Secrets: How Editors Shape Story and Emotion
-Production Design: Building Worlds on a Budget
+[SENT] Production Design: Building Worlds on a Budget
 The Role of the First AD: Running a Film Set
 Sound Design in Film: The Invisible Art That Controls How You Feel
 Score vs. Soundtrack: How Music Shapes a Film
