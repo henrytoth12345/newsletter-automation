@@ -4,7 +4,7 @@
 
 # --- COLOR GRADING ---
 [SENT] The difference between lift, gamma, and gain in color grading
-How to use LUTs without destroying your footage
+[SENT] How to use LUTs without destroying your footage
 What color temperature actually means and how to control it
 The three-way color corrector: how to use it properly
 How to create a teal and orange look from scratch
