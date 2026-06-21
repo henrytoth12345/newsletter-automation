@@ -2,7 +2,6 @@
 # Lines starting with # are ignored
 # [SENT] prefix means the topic has already been sent
 # Run with: python run_newsletter.py --from-queue
-Hello my name is Wyatt :))))
 Deconstructing the Editing Styles of Iconic Film Editors
 [SENT] how ai is changing the film industry
 
