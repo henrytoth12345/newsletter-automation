@@ -15,9 +15,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-TOPICS_FILE = "topics.txt"
-
-
 def slugify(text: str) -> str:
     text = text.lower().strip()
     text = re.sub(r"[^\w\s-]", "", text)
@@ -25,23 +22,22 @@ def slugify(text: str) -> str:
     return text[:50]
 
 
-def pick_next_topic() -> str:
-    if not Path(TOPICS_FILE).exists():
-        print(f"ERROR: {TOPICS_FILE} not found.", file=sys.stderr)
+def pick_next_topic(topics_file: str) -> str:
+    if not Path(topics_file).exists():
+        print(f"ERROR: {topics_file} not found.", file=sys.stderr)
         sys.exit(1)
 
-    lines = Path(TOPICS_FILE).read_text().splitlines()
+    lines = Path(topics_file).read_text().splitlines()
 
     for i, line in enumerate(lines):
         stripped = line.strip()
         if stripped and not stripped.startswith("#") and not stripped.startswith("[SENT]"):
-            # Mark as sent
             lines[i] = f"[SENT] {stripped}"
-            Path(TOPICS_FILE).write_text("\n".join(lines) + "\n")
+            Path(topics_file).write_text("\n".join(lines) + "\n")
             print(f"Topic picked from queue: {stripped}")
             return stripped
 
-    print("ERROR: No remaining topics in topics.txt. Add more topics to continue.", file=sys.stderr)
+    print(f"ERROR: No remaining topics in {topics_file}. Add more topics to continue.", file=sys.stderr)
     sys.exit(1)
 
 
@@ -59,11 +55,14 @@ def main():
     parser = argparse.ArgumentParser(description="Run the newsletter automation pipeline")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--topic", help='Newsletter topic, e.g. "AI in Healthcare"')
-    group.add_argument("--from-queue", action="store_true", help=f"Pick next topic from {TOPICS_FILE}")
-    parser.add_argument("--skip-images", action="store_true", help="Skip infographic generation (useful for testing)")
+    group.add_argument("--from-queue", action="store_true", help="Pick next topic from queue file")
+    parser.add_argument("--queue", default="topics.txt", help="Topics file to use (default: topics.txt)")
+    parser.add_argument("--recipient", help="Override recipient email")
+    parser.add_argument("--renderer", default="tools/render_newsletter.py", help="Renderer script to use")
+    parser.add_argument("--skip-images", action="store_true", help="Skip infographic generation")
     args = parser.parse_args()
 
-    topic = pick_next_topic() if args.from_queue else args.topic
+    topic = pick_next_topic(args.queue) if args.from_queue else args.topic
     slug = slugify(topic)
 
     research_file = f".tmp/research_{slug}.json"
@@ -105,7 +104,7 @@ def main():
     run(
         [
             sys.executable,
-            "tools/render_newsletter.py",
+            args.renderer,
             "--research", research_file,
             "--images-dir", images_dir or ".tmp/images/none",
             "--output", html_file,
@@ -118,7 +117,7 @@ def main():
         research = json.load(f)
 
     subject = research.get("subject_line", f"Newsletter: {topic}")
-    recipient = os.getenv("NEWSLETTER_RECIPIENT", "henrypaultoth@gmail.com")
+    recipient = args.recipient or os.getenv("NEWSLETTER_RECIPIENT", "henrypaultoth@gmail.com")
 
     run(
         [

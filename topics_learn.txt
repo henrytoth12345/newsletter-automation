@@ -1,0 +1,88 @@
+# One Thing to Learn — Daily topic queue
+# Lines starting with # are ignored
+# [SENT] prefix means the topic has already been sent
+
+# --- COLOR GRADING ---
+The difference between lift, gamma, and gain in color grading
+How to use LUTs without destroying your footage
+What color temperature actually means and how to control it
+The three-way color corrector: how to use it properly
+How to create a teal and orange look from scratch
+Why skin tones are the anchor of every color grade
+How to read a waveform monitor
+How to read a vectorscope
+The difference between primary and secondary color correction
+How to match shots from different cameras in the same scene
+What HDR means for colorists and why it matters
+How to use power windows to isolate a color grade
+The psychology of color in film: what each color communicates
+How to grade log footage correctly
+Why you should always grade on a calibrated monitor
+
+# --- STORYTELLING ---
+The difference between plot and story
+What the three-act structure actually teaches you
+How to write a character who wants something
+The role of subtext in great screenwriting
+How to create tension without action
+What "show don't tell" really means in practice
+The importance of the inciting incident
+How to end a scene at the right moment
+What makes a great antagonist
+How to use dramatic irony effectively
+The difference between theme and message
+How to write dialogue that sounds natural
+Why every scene needs conflict
+How to plant and payoff story elements
+The power of contrast in storytelling
+
+# --- EDITING ---
+The L-cut and J-cut: what they are and when to use them
+How to cut on action correctly
+What pace actually means in editing and how to control it
+The 30-degree rule: why it exists and when to break it
+How to use silence as an editing tool
+What makes a montage work
+How to use match cuts for visual storytelling
+The difference between continuity and creative editing
+How to choose where to place a cut
+Why the first and last frame of a shot matter
+How to edit dialogue scenes to keep energy up
+What motivated cuts are and why they matter
+How to use music to guide your edit
+The role of reaction shots in building scenes
+How to create rhythm through editing
+
+# --- BUSINESS & CAREER ---
+How to price your freelance film work
+What a day rate is and how to calculate yours
+How to write a treatment that gets approved
+How to negotiate a contract for film work
+What a distribution deal actually looks like
+How to build a portfolio that gets you hired
+The difference between a manager and an agent
+How to pitch a project to a producer
+What errors and omissions insurance is and why you need it
+How to protect your work with copyright
+What a co-production agreement is
+How to find funding for your short film
+The basics of film accounting and budgeting
+How to build relationships in the film industry
+What a producer's rep does and when you need one
+
+# --- CINEMATOGRAPHY ---
+How to use the exposure triangle creatively
+What the 180-degree shutter rule is and why it matters
+How depth of field affects storytelling
+The difference between motivated and unmotivated lighting
+How to light a face using a single source
+What the key light, fill light, and back light do
+How to use negative fill to create drama
+Why lens choice affects how subjects look
+How to shoot in low light without noise
+The difference between a hard light and a soft light
+How to use practical lights in a scene
+What anamorphic lenses do to an image
+How to create the illusion of depth in a flat shot
+The rule of thirds and when to break it
+How to use foreground elements to add depth
