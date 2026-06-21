@@ -110,6 +110,7 @@ def main():
     parser = argparse.ArgumentParser(description="Render learn newsletter HTML")
     parser.add_argument("--research", required=True)
     parser.add_argument("--images-dir", required=True)
+    parser.add_argument("--youtube", default="")
     parser.add_argument("--output", help="Output path (auto-derived if omitted)")
     args = parser.parse_args()
 
