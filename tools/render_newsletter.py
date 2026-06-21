@@ -131,7 +131,7 @@ def render(research: dict, images_dir: str, youtube_file: str = "") -> str:
     # Today's rundown bullets
     rundown_items = "".join(
         f'''<li style="margin-bottom:6px;">
-              <strong style="color:#1a1a1a;">{s["title"]}:</strong>
+              <strong style="color:#1a1a1a;">{s.get("title", "")}:</strong>
               <span style="color:#444;"> {s.get("body","")[:100].split(".")[0]}.</span>
             </li>'''
         for s in sections
@@ -164,7 +164,7 @@ def render(research: dict, images_dir: str, youtube_file: str = "") -> str:
           <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
                       font-size:11px;font-weight:800;letter-spacing:0.12em;
                       color:{ACCENT};text-transform:uppercase;margin-bottom:10px;">
-            {section["title"]}
+            {section.get("title", "")}
           </div>
           <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
             {body_to_paragraphs(section.get("body", ""))}

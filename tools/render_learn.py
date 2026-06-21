@@ -119,7 +119,7 @@ def render(research: dict, images_dir: str, youtube_file: str = "") -> str:
           <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
                       font-size:10px;font-weight:800;letter-spacing:0.14em;
                       color:{ACCENT};text-transform:uppercase;margin-bottom:10px;">
-            {section["title"]}
+            {section.get("title", "")}
           </div>
           <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
             {body_to_paragraphs(section.get("body", ""))}
