@@ -32,6 +32,7 @@ jobs:
         run: python run_newsletter.py --from-queue --skip-images
 
       - name: Save updated topics.txt
+        if: always()
         run: |
           git config user.name "Newsletter Bot"
           git config user.email "action@github.com"
