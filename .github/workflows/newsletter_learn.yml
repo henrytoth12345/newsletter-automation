@@ -36,6 +36,16 @@ jobs:
             --renderer tools/render_learn.py \
             --skip-images
 
+      - name: Refill queue if low
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          python tools/refill_queue.py \
+            --queue topics_learn.txt \
+            --theme "filmmaking skills including color grading, editing, cinematography, storytelling, and business" \
+            --threshold 10 \
+            --refill 20
+
       - name: Save updated topics_learn.txt
         if: always()
         run: |
