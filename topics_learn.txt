@@ -8,7 +8,7 @@
 [SENT] What color temperature actually means and how to control it
 [SENT] The three-way color corrector: how to use it properly
 [SENT] How to create a teal and orange look from scratch
-Why skin tones are the anchor of every color grade
+[SENT] Why skin tones are the anchor of every color grade
 How to read a waveform monitor
 How to read a vectorscope
 The difference between primary and secondary color correction
