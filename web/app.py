@@ -13,7 +13,6 @@ app = Flask(__name__)
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 GITHUB_REPO = os.getenv("GITHUB_REPO")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-TOPICS_FILE = "topics.txt"
 
 
 def gh_headers():
@@ -23,8 +22,8 @@ def gh_headers():
     }
 
 
-def get_topics_file():
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{TOPICS_FILE}"
+def get_file(filename):
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{filename}"
     resp = requests.get(url, headers=gh_headers())
     resp.raise_for_status()
     data = resp.json()
@@ -32,8 +31,8 @@ def get_topics_file():
     return content, data["sha"]
 
 
-def put_topics_file(content, sha, message="Update topics via web UI"):
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{TOPICS_FILE}"
+def put_file(filename, content, sha, message="Update topics via web UI"):
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{filename}"
     payload = {
         "message": message,
         "content": base64.b64encode(content.encode()).decode(),
@@ -55,21 +54,7 @@ def parse_topics(content):
     return pending, sent
 
 
-@app.route("/")
-def index():
-    content, _ = get_topics_file()
-    pending, sent = parse_topics(content)
-    return render_template("index.html", pending=pending, sent=sent)
-
-
-@app.route("/topics/add", methods=["POST"])
-def add_topics():
-    raw = request.form.get("topics", "").strip()
-    if not raw:
-        return redirect("/")
-    new_lines = [l.strip() for l in raw.splitlines() if l.strip()]
-    content, sha = get_topics_file()
-
+def insert_topics(content, new_lines):
     lines = content.splitlines()
     insert_at = 0
     for i, line in enumerate(lines):
@@ -77,36 +62,13 @@ def add_topics():
             insert_at = i + 1
         else:
             break
-
     lines[insert_at:insert_at] = new_lines
-    put_topics_file("\n".join(lines) + "\n", sha)
-    return redirect("/")
+    return "\n".join(lines) + "\n"
 
 
-@app.route("/topics/delete", methods=["POST"])
-def delete_topic():
-    topic = request.form.get("topic", "").strip()
-    content, sha = get_topics_file()
-    lines = [l for l in content.splitlines() if l.strip() != topic]
-    put_topics_file("\n".join(lines) + "\n", sha)
-    return redirect("/")
-
-
-@app.route("/trigger", methods=["POST"])
-def trigger():
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/actions/workflows/newsletter.yml/dispatches"
-    requests.post(url, headers=gh_headers(), json={"ref": "main"}).raise_for_status()
-    return redirect("/?triggered=1")
-
-
-@app.route("/suggest", methods=["POST"])
-def suggest():
-    content, _ = get_topics_file()
-    pending, sent = parse_topics(content)
-    existing = (pending + sent)[:40]
-    existing_text = "\n".join(f"- {t}" for t in existing)
-
-    prompt = f"""Here are existing newsletter topics about filmmaking and the film industry:
+def groq_suggest(existing, theme):
+    existing_text = "\n".join(f"- {t}" for t in existing[:40])
+    prompt = f"""Here are existing newsletter topics about {theme}:
 
 {existing_text}
 
@@ -127,10 +89,96 @@ Return ONLY a JSON array of 4 strings, no explanation. Example format:
     )
     resp.raise_for_status()
     text = resp.json()["choices"][0]["message"]["content"].strip()
-
     start = text.find("[")
     end = text.rfind("]") + 1
-    suggestions = json.loads(text[start:end])
+    return json.loads(text[start:end])
+
+
+# ── Filmmaking newsletter ──────────────────────────────────────────────
+
+@app.route("/")
+def index():
+    content, _ = get_file("topics.txt")
+    pending, sent = parse_topics(content)
+    return render_template("index.html", pending=pending, sent=sent)
+
+
+@app.route("/topics/add", methods=["POST"])
+def add_topics():
+    raw = request.form.get("topics", "").strip()
+    if not raw:
+        return redirect("/")
+    new_lines = [l.strip() for l in raw.splitlines() if l.strip()]
+    content, sha = get_file("topics.txt")
+    put_file("topics.txt", insert_topics(content, new_lines), sha)
+    return redirect("/")
+
+
+@app.route("/topics/delete", methods=["POST"])
+def delete_topic():
+    topic = request.form.get("topic", "").strip()
+    content, sha = get_file("topics.txt")
+    lines = [l for l in content.splitlines() if l.strip() != topic]
+    put_file("topics.txt", "\n".join(lines) + "\n", sha)
+    return redirect("/")
+
+
+@app.route("/trigger", methods=["POST"])
+def trigger():
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/actions/workflows/newsletter.yml/dispatches"
+    requests.post(url, headers=gh_headers(), json={"ref": "main"}).raise_for_status()
+    return redirect("/")
+
+
+@app.route("/suggest", methods=["POST"])
+def suggest():
+    content, _ = get_file("topics.txt")
+    pending, sent = parse_topics(content)
+    suggestions = groq_suggest(pending + sent, "filmmaking and the film industry")
+    return jsonify(suggestions=suggestions)
+
+
+# ── Learn newsletter ──────────────────────────────────────────────────
+
+@app.route("/learn")
+def learn_index():
+    content, _ = get_file("topics_learn.txt")
+    pending, sent = parse_topics(content)
+    return render_template("learn.html", pending=pending, sent=sent)
+
+
+@app.route("/learn/topics/add", methods=["POST"])
+def learn_add_topics():
+    raw = request.form.get("topics", "").strip()
+    if not raw:
+        return redirect("/learn")
+    new_lines = [l.strip() for l in raw.splitlines() if l.strip()]
+    content, sha = get_file("topics_learn.txt")
+    put_file("topics_learn.txt", insert_topics(content, new_lines), sha)
+    return redirect("/learn")
+
+
+@app.route("/learn/topics/delete", methods=["POST"])
+def learn_delete_topic():
+    topic = request.form.get("topic", "").strip()
+    content, sha = get_file("topics_learn.txt")
+    lines = [l for l in content.splitlines() if l.strip() != topic]
+    put_file("topics_learn.txt", "\n".join(lines) + "\n", sha)
+    return redirect("/learn")
+
+
+@app.route("/learn/trigger", methods=["POST"])
+def learn_trigger():
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/actions/workflows/newsletter_learn.yml/dispatches"
+    requests.post(url, headers=gh_headers(), json={"ref": "main"}).raise_for_status()
+    return redirect("/learn")
+
+
+@app.route("/learn/suggest", methods=["POST"])
+def learn_suggest():
+    content, _ = get_file("topics_learn.txt")
+    pending, sent = parse_topics(content)
+    suggestions = groq_suggest(pending + sent, "filmmaking skills — color grading, editing, storytelling, cinematography, and business")
     return jsonify(suggestions=suggestions)
 
 

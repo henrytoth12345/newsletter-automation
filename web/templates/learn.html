@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsletter Dashboard</title>
+    <title>Learn Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -361,15 +361,15 @@
 
     <header class="header">
         <div style="display:flex;align-items:center;gap:16px;">
-            <div class="header__title">Filmmaking</div>
-            <a href="/learn" style="font-size:13px;color:var(--teal);text-decoration:none;
+            <div class="header__title">Learn</div>
+            <a href="/" style="font-size:13px;color:var(--teal);text-decoration:none;
                border:1px solid var(--border-color);padding:5px 12px;border-radius:6px;
                transition:all 150ms ease;" onmouseover="this.style.borderColor='var(--accent)'"
                onmouseout="this.style.borderColor='var(--border-color)'">
-               Switch to Learn →
+               Switch to Filmmaking →
             </a>
         </div>
-        <form method="POST" action="/trigger" style="margin:0">
+        <form method="POST" action="/learn/trigger" style="margin:0">
             <button type="submit" class="btn-send" id="send-btn">Send Now</button>
         </form>
     </header>
@@ -404,7 +404,7 @@
 
         <div class="card">
             <div class="card__title">Add Topics</div>
-            <form method="POST" action="/topics/add" id="add-form">
+            <form method="POST" action="/learn/topics/add" id="add-form">
                 <textarea
                     class="textarea"
                     name="topics"
@@ -426,7 +426,7 @@
             {% for topic in pending %}
             <div class="topic-row">
                 <div class="topic-row__text">{{ topic }}</div>
-                <form method="POST" action="/topics/delete" style="margin:0;display:flex;">
+                <form method="POST" action="/learn/topics/delete" style="margin:0;display:flex;">
                     <input type="hidden" name="topic" value="{{ topic }}">
                     <button type="submit" class="topic-row__delete" title="Delete">×</button>
                 </form>
@@ -477,7 +477,7 @@
     });
 
     // Send button loading
-    document.querySelector('form[action="/trigger"]').addEventListener('submit', function() {
+    document.querySelector('form[action="/learn/trigger"]').addEventListener('submit', function() {
         const btn = document.getElementById('send-btn');
         btn.disabled = true;
         btn.innerHTML = '<span class="spinner"></span>Sending...';
@@ -500,7 +500,7 @@
         const textarea = document.getElementById('topics-textarea');
 
         try {
-            const resp = await fetch('/suggest', { method: 'POST' });
+            const resp = await fetch('/learn/suggest', { method: 'POST' });
             const data = await resp.json();
             chipsEl.innerHTML = '';
             data.suggestions.forEach(topic => {
