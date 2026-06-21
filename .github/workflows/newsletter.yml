@@ -28,6 +28,7 @@ jobs:
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           NEWSLETTER_RECIPIENT: ${{ secrets.NEWSLETTER_RECIPIENT }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python run_newsletter.py --from-queue --skip-images
 
       - name: Save updated topics.txt

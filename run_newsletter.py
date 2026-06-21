@@ -68,6 +68,7 @@ def main():
     research_file = f".tmp/research_{slug}.json"
     images_dir = f".tmp/images/{slug}"
     html_file = f".tmp/newsletter_{slug}.html"
+    youtube_file = f".tmp/youtube_{slug}.json"
 
     Path(".tmp/images").mkdir(parents=True, exist_ok=True)
 
@@ -75,6 +76,12 @@ def main():
     run(
         [sys.executable, "tools/research_topic.py", "--topic", topic],
         "Research topic with Groq",
+    )
+
+    # Step 2a: Fetch YouTube videos
+    run(
+        [sys.executable, "tools/fetch_youtube.py", "--topic", topic, "--output", youtube_file],
+        "Fetch YouTube videos",
     )
 
     # Step 2: Generate infographics (one per section)
@@ -107,6 +114,7 @@ def main():
             args.renderer,
             "--research", research_file,
             "--images-dir", images_dir or ".tmp/images/none",
+            "--youtube", youtube_file,
             "--output", html_file,
         ],
         "Render newsletter HTML",
