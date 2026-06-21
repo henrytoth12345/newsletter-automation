@@ -3,7 +3,7 @@
 # [SENT] prefix means the topic has already been sent
 
 # --- COLOR GRADING ---
-The difference between lift, gamma, and gain in color grading
+[SENT] The difference between lift, gamma, and gain in color grading
 How to use LUTs without destroying your footage
 What color temperature actually means and how to control it
 The three-way color corrector: how to use it properly
