@@ -35,7 +35,59 @@ def body_to_paragraphs(body: str) -> str:
     )
 
 
-def render(research: dict, images_dir: str) -> str:
+def render_youtube_section(youtube_file: str) -> str:
+    path = Path(youtube_file)
+    if not path.exists():
+        return ""
+    try:
+        videos = json.loads(path.read_text())
+    except Exception:
+        return ""
+    if not videos:
+        return ""
+
+    cards = ""
+    for v in videos:
+        cards += f'''
+        <a href="{v['url']}" target="_blank"
+           style="display:block;text-decoration:none;margin-bottom:16px;
+                  border:1px solid #e8e8e8;border-radius:6px;overflow:hidden;">
+          <div style="position:relative;">
+            <img src="{v['thumbnail']}" alt="{v['title']}"
+                 style="width:100%;display:block;border-bottom:1px solid #e8e8e8;">
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+                        width:52px;height:52px;background:rgba(0,0,0,0.7);border-radius:50%;
+                        display:flex;align-items:center;justify-content:center;">
+              <div style="width:0;height:0;border-top:10px solid transparent;
+                          border-bottom:10px solid transparent;
+                          border-left:18px solid white;margin-left:4px;"></div>
+            </div>
+          </div>
+          <div style="padding:12px 14px;background:#fff;">
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+                        font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px;line-height:1.4;">
+              {v['title']}
+            </div>
+            <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+                        font-size:12px;color:#888;">
+              {v['channel']}
+            </div>
+          </div>
+        </a>'''
+
+    return f'''
+    <div style="margin-bottom:32px;">
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+                  font-size:10px;font-weight:800;letter-spacing:0.14em;
+                  color:{ACCENT};text-transform:uppercase;margin-bottom:14px;">
+        Watch
+      </div>
+      {cards}
+      <div style="border-top:1px solid #e8e8e8;margin-top:4px;"></div>
+    </div>'''
+
+
+def render(research: dict, images_dir: str, youtube_file: str = "") -> str:
     topic = research.get("topic", "Today's Lesson")
     sections = research.get("sections", [])
 
@@ -99,6 +151,7 @@ def render(research: dict, images_dir: str) -> str:
       {divider}
       {topic_html}
       {sections_html}
+      {render_youtube_section(youtube_file)}
       {footer_html}
     </div>
   </div>
@@ -121,7 +174,7 @@ def main():
     with open(args.research) as f:
         research = json.load(f)
 
-    html = render(research, args.images_dir)
+    html = render(research, args.images_dir, args.youtube)
 
     output_path = args.output or f".tmp/newsletter_{slugify(research['topic'])}.html"
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
