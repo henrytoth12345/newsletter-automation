@@ -9,7 +9,7 @@
 [SENT] The three-way color corrector: how to use it properly
 [SENT] How to create a teal and orange look from scratch
 [SENT] Why skin tones are the anchor of every color grade
-How to read a waveform monitor
+[SENT] How to read a waveform monitor
 How to read a vectorscope
 The difference between primary and secondary color correction
 How to match shots from different cameras in the same scene
