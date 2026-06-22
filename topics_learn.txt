@@ -10,7 +10,7 @@
 [SENT] How to create a teal and orange look from scratch
 [SENT] Why skin tones are the anchor of every color grade
 [SENT] How to read a waveform monitor
-How to read a vectorscope
+[SENT] How to read a vectorscope
 The difference between primary and secondary color correction
 How to match shots from different cameras in the same scene
 What HDR means for colorists and why it matters
