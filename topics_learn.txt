@@ -11,7 +11,7 @@
 [SENT] Why skin tones are the anchor of every color grade
 [SENT] How to read a waveform monitor
 [SENT] How to read a vectorscope
-The difference between primary and secondary color correction
+[SENT] The difference between primary and secondary color correction
 How to match shots from different cameras in the same scene
 What HDR means for colorists and why it matters
 How to use power windows to isolate a color grade
