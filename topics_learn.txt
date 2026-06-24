@@ -12,7 +12,7 @@
 [SENT] How to read a waveform monitor
 [SENT] How to read a vectorscope
 [SENT] The difference between primary and secondary color correction
-How to match shots from different cameras in the same scene
+[SENT] How to match shots from different cameras in the same scene
 What HDR means for colorists and why it matters
 How to use power windows to isolate a color grade
 The psychology of color in film: what each color communicates
