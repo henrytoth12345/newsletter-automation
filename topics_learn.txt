@@ -15,7 +15,7 @@
 [SENT] How to match shots from different cameras in the same scene
 [SENT] What HDR means for colorists and why it matters
 [SENT] How to use power windows to isolate a color grade
-The psychology of color in film: what each color communicates
+[SENT] The psychology of color in film: what each color communicates
 How to grade log footage correctly
 Why you should always grade on a calibrated monitor
 
