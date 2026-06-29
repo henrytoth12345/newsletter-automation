@@ -17,7 +17,7 @@
 [SENT] How to use power windows to isolate a color grade
 [SENT] The psychology of color in film: what each color communicates
 [SENT] How to grade log footage correctly
-Why you should always grade on a calibrated monitor
+[SENT] Why you should always grade on a calibrated monitor
 
 # --- STORYTELLING ---
 The difference between plot and story
