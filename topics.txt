@@ -34,7 +34,7 @@
 [SENT] Film Financing in 2025: How Movies Actually Get Funded
 [SENT] The Future of Movie Theaters: Premium Formats and the Fight for Audiences
 [SENT] How Streaming Algorithms Decide What Gets Made
-The Rise of International Cinema: Korean, Indian, and Spanish Film Goes Global
+[SENT] The Rise of International Cinema: Korean, Indian, and Spanish Film Goes Global
 Hollywood and AI: How the Industry Is Responding to New Technology
 The Hidden Costs of Making a Movie: What Budgets Don't Show
 How Independent Films Get Distribution Deals
