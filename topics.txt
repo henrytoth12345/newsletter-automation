@@ -37,7 +37,7 @@
 [SENT] The Rise of International Cinema: Korean, Indian, and Spanish Film Goes Global
 [SENT] Hollywood and AI: How the Industry Is Responding to New Technology
 [SENT] The Hidden Costs of Making a Movie: What Budgets Don't Show
-How Independent Films Get Distribution Deals
+[SENT] How Independent Films Get Distribution Deals
 
 # --- DIRECTORS & FILMMAKERS ---
 Christopher Nolan's Filmmaking Philosophy: Practical Over Digital
