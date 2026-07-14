@@ -18,33 +18,33 @@
 [SENT] Color Grading: How the Look of a Film Gets Made
 [SENT] The Art of the Shot List: How Directors Pre-Visualize Films
 [SENT] Lenses and Storytelling: How Focal Length Changes Everything
-Low-Budget Filmmaking: How Indie Directors Do More With Less
-The 180-Degree Rule and When Great Directors Break It
-Blocking and Movement: How Directors Stage Scenes
+[SENT] Low-Budget Filmmaking: How Indie Directors Do More With Less
+[SENT] The 180-Degree Rule and When Great Directors Break It
+[SENT] Blocking and Movement: How Directors Stage Scenes
 
 # --- FILM INDUSTRY NEWS & BUSINESS ---
-Box Office Trends: What's Actually Making Money in 2025
-The Streaming Wars: Where Netflix, Disney+, and Apple TV+ Stand Today
-How Hollywood Strikes Changed the Industry Forever
-The Rise of A24: How an Indie Studio Changed What Gets Made
-Film Festival Circuit: How Sundance, Cannes, and TIFF Shape Releases
-The Death of the Mid-Budget Film: What Happened and What's Next
-How Movie Marketing Has Changed in the Social Media Era
-The Global Box Office: How International Markets Drive Hollywood Decisions
-Film Financing in 2025: How Movies Actually Get Funded
-The Future of Movie Theaters: Premium Formats and the Fight for Audiences
-How Streaming Algorithms Decide What Gets Made
-The Rise of International Cinema: Korean, Indian, and Spanish Film Goes Global
-Hollywood and AI: How the Industry Is Responding to New Technology
-The Hidden Costs of Making a Movie: What Budgets Don't Show
-How Independent Films Get Distribution Deals
+[SENT] Box Office Trends: What's Actually Making Money in 2025
+[SENT] The Streaming Wars: Where Netflix, Disney+, and Apple TV+ Stand Today
+[SENT] How Hollywood Strikes Changed the Industry Forever
+[SENT] The Rise of A24: How an Indie Studio Changed What Gets Made
+[SENT] Film Festival Circuit: How Sundance, Cannes, and TIFF Shape Releases
+[SENT] The Death of the Mid-Budget Film: What Happened and What's Next
+[SENT] How Movie Marketing Has Changed in the Social Media Era
+[SENT] The Global Box Office: How International Markets Drive Hollywood Decisions
+[SENT] Film Financing in 2025: How Movies Actually Get Funded
+[SENT] The Future of Movie Theaters: Premium Formats and the Fight for Audiences
+[SENT] How Streaming Algorithms Decide What Gets Made
+[SENT] The Rise of International Cinema: Korean, Indian, and Spanish Film Goes Global
+[SENT] Hollywood and AI: How the Industry Is Responding to New Technology
+[SENT] The Hidden Costs of Making a Movie: What Budgets Don't Show
+[SENT] How Independent Films Get Distribution Deals
 
 # --- DIRECTORS & FILMMAKERS ---
-Christopher Nolan's Filmmaking Philosophy: Practical Over Digital
-How Greta Gerwig Went From Actress to Oscar-Winning Director
-The Coen Brothers' Approach to Story, Character, and Tone
-Denis Villeneuve and the Return of the Adult Sci-Fi Epic
-Emerging Directors to Watch: The Next Wave of Filmmakers
+[SENT] Christopher Nolan's Filmmaking Philosophy: Practical Over Digital
+[SENT] How Greta Gerwig Went From Actress to Oscar-Winning Director
+[SENT] The Coen Brothers' Approach to Story, Character, and Tone
+[SENT] Denis Villeneuve and the Return of the Adult Sci-Fi Epic
+[SENT] Emerging Directors to Watch: The Next Wave of Filmmakers
 How Female Directors Are Reshaping Hollywood
 The New Wave of African Cinema: Directors Changing the Global Conversation
 How Jordan Peele Built a New Genre of Horror
