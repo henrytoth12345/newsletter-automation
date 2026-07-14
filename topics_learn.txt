@@ -9,32 +9,32 @@
 [SENT] The three-way color corrector: how to use it properly
 [SENT] How to create a teal and orange look from scratch
 [SENT] Why skin tones are the anchor of every color grade
-How to read a waveform monitor
-How to read a vectorscope
-The difference between primary and secondary color correction
-How to match shots from different cameras in the same scene
-What HDR means for colorists and why it matters
-How to use power windows to isolate a color grade
-The psychology of color in film: what each color communicates
-How to grade log footage correctly
-Why you should always grade on a calibrated monitor
+[SENT] How to read a waveform monitor
+[SENT] How to read a vectorscope
+[SENT] The difference between primary and secondary color correction
+[SENT] How to match shots from different cameras in the same scene
+[SENT] What HDR means for colorists and why it matters
+[SENT] How to use power windows to isolate a color grade
+[SENT] The psychology of color in film: what each color communicates
+[SENT] How to grade log footage correctly
+[SENT] Why you should always grade on a calibrated monitor
 
 # --- STORYTELLING ---
-The difference between plot and story
-What the three-act structure actually teaches you
-How to write a character who wants something
-The role of subtext in great screenwriting
-How to create tension without action
-What "show don't tell" really means in practice
-The importance of the inciting incident
-How to end a scene at the right moment
-What makes a great antagonist
-How to use dramatic irony effectively
-The difference between theme and message
-How to write dialogue that sounds natural
-Why every scene needs conflict
-How to plant and payoff story elements
-The power of contrast in storytelling
+[SENT] The difference between plot and story
+[SENT] What the three-act structure actually teaches you
+[SENT] How to write a character who wants something
+[SENT] The role of subtext in great screenwriting
+[SENT] How to create tension without action
+[SENT] What "show don't tell" really means in practice
+[SENT] The importance of the inciting incident
+[SENT] How to end a scene at the right moment
+[SENT] What makes a great antagonist
+[SENT] How to use dramatic irony effectively
+[SENT] The difference between theme and message
+[SENT] How to write dialogue that sounds natural
+[SENT] Why every scene needs conflict
+[SENT] How to plant and payoff story elements
+[SENT] The power of contrast in storytelling
 
 # --- EDITING ---
 The L-cut and J-cut: what they are and when to use them
