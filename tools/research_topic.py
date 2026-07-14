@@ -58,7 +58,18 @@ Your output must be valid JSON with exactly this structure:
   ]
 }
 
+Write in complete, grammatically correct sentences. Every sentence must be fully formed and end with
+proper punctuation — never truncate or trail off. Proofread your own output before responding: no
+typos, no misspellings, no missing words.
+
 Output ONLY the JSON object, no markdown fences, no preamble."""
+
+PROOFREAD_SYSTEM_PROMPT = """You are a copy editor. You will be given a JSON object for a newsletter.
+Proofread every string value: fix typos, misspellings, grammar errors, and complete any sentence that
+is cut off or incomplete. Do not change the meaning, facts, or structure — only correct the writing.
+Preserve the exact same JSON schema and keys.
+
+Output ONLY the corrected JSON object, no markdown fences, no preamble."""
 
 
 def slugify(text: str) -> str:
@@ -79,13 +90,15 @@ def research_topic(topic: str) -> dict:
     print(f"Researching: {topic}")
     response = client.chat.completions.create(
         model="llama-3.3-70b-versatile",
-        max_tokens=4096,
+        max_tokens=8192,
+        response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": f"Research this topic for a newsletter: {topic}"},
         ],
     )
 
+    finish_reason = response.choices[0].finish_reason
     raw = response.choices[0].message.content.strip()
 
     # Strip markdown code fences if present
@@ -100,7 +113,36 @@ def research_topic(topic: str) -> dict:
         print(f"Raw response:\n{raw}", file=sys.stderr)
         sys.exit(1)
 
+    if finish_reason == "length":
+        print("WARNING: response was truncated (hit max_tokens); some sections may be incomplete", file=sys.stderr)
+
+    print("Proofreading...")
+    data = proofread(client, data)
+
     return data
+
+
+def proofread(client: Groq, data: dict) -> dict:
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        max_tokens=8192,
+        response_format={"type": "json_object"},
+        messages=[
+            {"role": "system", "content": PROOFREAD_SYSTEM_PROMPT},
+            {"role": "user", "content": json.dumps(data)},
+        ],
+    )
+
+    raw = response.choices[0].message.content.strip()
+    if raw.startswith("```"):
+        raw = re.sub(r"^```[a-z]*\n?", "", raw)
+        raw = re.sub(r"\n?```$", "", raw)
+
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        print(f"WARNING: proofread pass returned invalid JSON, keeping unproofread draft: {e}", file=sys.stderr)
+        return data
 
 
 def main():

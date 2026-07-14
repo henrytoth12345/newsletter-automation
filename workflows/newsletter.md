@@ -22,7 +22,9 @@ Generate and send a polished, multi-section HTML newsletter on any topic. Claude
 ```
 python tools/research_topic.py --topic "<topic>"
 ```
-- Calls `claude-sonnet-4-6` with a structured JSON prompt
+- Calls Groq (`llama-3.3-70b-versatile`) with a structured JSON prompt, then runs a second
+  proofreading pass (same model) that corrects typos, grammar, and incomplete sentences
+  before saving
 - Outputs: `.tmp/research_{slug}.json`
 - JSON contains: `topic`, `subject_line`, `preview_text`, `sections[{title, body, infographic_prompt}]`
 - 5 sections: Overview, Key Findings, Data & Statistics, Expert Perspectives, Takeaways & Action Items
@@ -78,4 +80,8 @@ All `.tmp/` files are disposable and regenerated on each run.
 ## Improvement Log
 _(Update this section when you discover new constraints, errors, or better approaches)_
 
-- **[date]** — Notes go here
+- **2026-07-14** — Newsletters occasionally had typos/incomplete sentences. Root cause: `max_tokens=4096`
+  was tight for 5 sections of 3-4 paragraphs each, risking mid-sentence truncation, and there was no
+  review pass. Fixed by raising `max_tokens` to 8192, adding a finish_reason check that warns on
+  truncation, and adding a second Groq proofreading pass in `research_topic.py` that corrects typos,
+  grammar, and unfinished sentences before the JSON is saved.
