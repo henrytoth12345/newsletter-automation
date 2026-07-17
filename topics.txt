@@ -49,7 +49,7 @@
 [SENT] The New Wave of African Cinema: Directors Changing the Global Conversation
 [SENT] How Jordan Peele Built a New Genre of Horror
 [SENT] The Cinematographers Who Define the Visual Language of Modern Film
-Documentary Filmmakers Who Changed How We See the World
+[SENT] Documentary Filmmakers Who Changed How We See the World
 
 # --- TECHNOLOGY & INNOVATION ---
 How LED Volume Stages Are Replacing Location Shoots
