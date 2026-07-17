@@ -45,10 +45,10 @@
 [SENT] The Coen Brothers' Approach to Story, Character, and Tone
 [SENT] Denis Villeneuve and the Return of the Adult Sci-Fi Epic
 [SENT] Emerging Directors to Watch: The Next Wave of Filmmakers
-How Female Directors Are Reshaping Hollywood
-The New Wave of African Cinema: Directors Changing the Global Conversation
-How Jordan Peele Built a New Genre of Horror
-The Cinematographers Who Define the Visual Language of Modern Film
+[SENT] How Female Directors Are Reshaping Hollywood
+[SENT] The New Wave of African Cinema: Directors Changing the Global Conversation
+[SENT] How Jordan Peele Built a New Genre of Horror
+[SENT] The Cinematographers Who Define the Visual Language of Modern Film
 Documentary Filmmakers Who Changed How We See the World
 
 # --- TECHNOLOGY & INNOVATION ---
