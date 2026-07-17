@@ -19,13 +19,9 @@ LOGO_URL = "https://raw.githubusercontent.com/henrytoth12345/newsletter-automati
 ACCENT = "#e8232a"
 
 
-def first_sentence(text: str, max_len: int = 140) -> str:
+def first_sentence(text: str) -> str:
     match = re.search(r"[.!?](?:\s|$)", text)
-    sentence = text[:match.end()].strip() if match else text.strip()
-    if len(sentence) > max_len:
-        truncated = sentence[:max_len].rsplit(" ", 1)[0]
-        sentence = truncated.rstrip(".") + "..."
-    return sentence
+    return text[:match.end()].strip() if match else text.strip()
 
 
 def slugify(text: str) -> str:
