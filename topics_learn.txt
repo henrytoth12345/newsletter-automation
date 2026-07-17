@@ -39,7 +39,7 @@
 # --- EDITING ---
 [SENT] The L-cut and J-cut: what they are and when to use them
 [SENT] How to cut on action correctly
-What pace actually means in editing and how to control it
+[SENT] What pace actually means in editing and how to control it
 The 30-degree rule: why it exists and when to break it
 How to use silence as an editing tool
 What makes a montage work
