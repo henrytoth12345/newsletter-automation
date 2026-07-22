@@ -44,7 +44,7 @@
 [SENT] How to use silence as an editing tool
 [SENT] What makes a montage work
 [SENT] How to use match cuts for visual storytelling
-The difference between continuity and creative editing
+[SENT] The difference between continuity and creative editing
 How to choose where to place a cut
 Why the first and last frame of a shot matter
 How to edit dialogue scenes to keep energy up
