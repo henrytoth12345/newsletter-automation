@@ -56,7 +56,7 @@
 [SENT] The State of Virtual Production in 2025
 [SENT] AI Tools Filmmakers Are Actually Using on Set
 [SENT] How Drones Changed Aerial Cinematography
-The Future of 3D: Why It Keeps Coming Back
+[SENT] The Future of 3D: Why It Keeps Coming Back
 Camera Technology in 2025: What's New and What Matters
 How Streaming Changed Post-Production Workflows
 The Rise of Mobile Filmmaking: Shooting Features on iPhone
