@@ -45,7 +45,7 @@
 [SENT] What makes a montage work
 [SENT] How to use match cuts for visual storytelling
 [SENT] The difference between continuity and creative editing
-How to choose where to place a cut
+[SENT] How to choose where to place a cut
 Why the first and last frame of a shot matter
 How to edit dialogue scenes to keep energy up
 What motivated cuts are and why they matter
