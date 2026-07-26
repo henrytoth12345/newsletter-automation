@@ -60,7 +60,7 @@
 [SENT] Camera Technology in 2025: What's New and What Matters
 [SENT] How Streaming Changed Post-Production Workflows
 [SENT] The Rise of Mobile Filmmaking: Shooting Features on iPhone
-Digital vs. Film: Why Some Directors Still Shoot on Celluloid
+[SENT] Digital vs. Film: Why Some Directors Still Shoot on Celluloid
 How Video Games Are Influencing Cinematic Visual Language
 
 # --- GENRES & STORYTELLING ---
