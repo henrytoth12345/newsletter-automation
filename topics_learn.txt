@@ -51,7 +51,7 @@
 [SENT] What motivated cuts are and why they matter
 [SENT] How to use music to guide your edit
 [SENT] The role of reaction shots in building scenes
-How to create rhythm through editing
+[SENT] How to create rhythm through editing
 
 # --- BUSINESS & CAREER ---
 How to price your freelance film work
