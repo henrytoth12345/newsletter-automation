@@ -66,7 +66,7 @@
 # --- GENRES & STORYTELLING ---
 [SENT] The Superhero Fatigue Debate: What the Data Actually Shows
 [SENT] Why Horror Is the Most Profitable Genre in Hollywood
-The Documentary Boom: Why Non-Fiction Film Is Having a Moment
+[SENT] The Documentary Boom: Why Non-Fiction Film Is Having a Moment
 The State of the Western: A Genre That Won't Die
 How Romantic Comedies Are Making a Comeback
 True Crime Documentaries: Why We Can't Stop Watching
