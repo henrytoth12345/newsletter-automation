@@ -69,7 +69,7 @@
 [SENT] The Documentary Boom: Why Non-Fiction Film Is Having a Moment
 [SENT] The State of the Western: A Genre That Won't Die
 [SENT] How Romantic Comedies Are Making a Comeback
-True Crime Documentaries: Why We Can't Stop Watching
+[SENT] True Crime Documentaries: Why We Can't Stop Watching
 The Rise of the A24 Horror Aesthetic
 Anthology Films and Series: Storytelling Without Sequels
 How Animation Became the Most Ambitious Storytelling Format
