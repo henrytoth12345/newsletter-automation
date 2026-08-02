@@ -57,7 +57,7 @@
 [SENT] How to price your freelance film work
 [SENT] What a day rate is and how to calculate yours
 [SENT] How to write a treatment that gets approved
-How to negotiate a contract for film work
+[SENT] How to negotiate a contract for film work
 What a distribution deal actually looks like
 How to build a portfolio that gets you hired
 The difference between a manager and an agent
