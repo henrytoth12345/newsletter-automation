@@ -60,7 +60,7 @@
 [SENT] How to negotiate a contract for film work
 [SENT] What a distribution deal actually looks like
 [SENT] How to build a portfolio that gets you hired
-The difference between a manager and an agent
+[SENT] The difference between a manager and an agent
 How to pitch a project to a producer
 What errors and omissions insurance is and why you need it
 How to protect your work with copyright
