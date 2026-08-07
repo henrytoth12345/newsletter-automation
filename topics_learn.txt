@@ -62,7 +62,7 @@
 [SENT] How to build a portfolio that gets you hired
 [SENT] The difference between a manager and an agent
 [SENT] How to pitch a project to a producer
-What errors and omissions insurance is and why you need it
+[SENT] What errors and omissions insurance is and why you need it
 How to protect your work with copyright
 What a co-production agreement is
 How to find funding for your short film
