@@ -63,7 +63,7 @@
 [SENT] The difference between a manager and an agent
 [SENT] How to pitch a project to a producer
 [SENT] What errors and omissions insurance is and why you need it
-How to protect your work with copyright
+[SENT] How to protect your work with copyright
 What a co-production agreement is
 How to find funding for your short film
 The basics of film accounting and budgeting
