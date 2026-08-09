@@ -64,7 +64,7 @@
 [SENT] How to pitch a project to a producer
 [SENT] What errors and omissions insurance is and why you need it
 [SENT] How to protect your work with copyright
-What a co-production agreement is
+[SENT] What a co-production agreement is
 How to find funding for your short film
 The basics of film accounting and budgeting
 How to build relationships in the film industry
