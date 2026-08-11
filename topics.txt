@@ -79,7 +79,7 @@
 [SENT] How to Break Into the Film Industry in 2025
 [SENT] What Film School Actually Teaches You (And What It Doesn't)
 [SENT] The Life of a Film Crew: What Each Department Actually Does
-How Casting Directors Shape the Films We Love
+[SENT] How Casting Directors Shape the Films We Love
 Agents, Managers, and Lawyers: How Hollywood Representation Works
 The Guild System: How Unions Protect (and Shape) Hollywood
 Working as a Screenwriter: The Reality Behind the Glamour
