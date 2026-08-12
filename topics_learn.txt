@@ -67,7 +67,7 @@
 [SENT] What a co-production agreement is
 [SENT] How to find funding for your short film
 [SENT] The basics of film accounting and budgeting
-How to build relationships in the film industry
+[SENT] How to build relationships in the film industry
 What a producer's rep does and when you need one
 
 # --- CINEMATOGRAPHY ---
