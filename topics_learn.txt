@@ -68,7 +68,7 @@
 [SENT] How to find funding for your short film
 [SENT] The basics of film accounting and budgeting
 [SENT] How to build relationships in the film industry
-What a producer's rep does and when you need one
+[SENT] What a producer's rep does and when you need one
 
 # --- CINEMATOGRAPHY ---
 How to use the exposure triangle creatively
