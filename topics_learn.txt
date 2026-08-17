@@ -74,7 +74,7 @@
 [SENT] How to use the exposure triangle creatively
 [SENT] What the 180-degree shutter rule is and why it matters
 [SENT] How depth of field affects storytelling
-The difference between motivated and unmotivated lighting
+[SENT] The difference between motivated and unmotivated lighting
 How to light a face using a single source
 What the key light, fill light, and back light do
 How to use negative fill to create drama
