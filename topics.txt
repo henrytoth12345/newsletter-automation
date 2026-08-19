@@ -89,7 +89,7 @@
 
 # --- FILMMAKING CRAFT (CONTINUED) ---
 [SENT] The Art of the Close-Up: When and Why Directors Move In Tight
-Natural Light Cinematography: How to Shoot Without Artificial Lighting
+[SENT] Natural Light Cinematography: How to Shoot Without Artificial Lighting
 The Jump Cut: Why Godard's Mistake Became a Filmmaking Tool
 Aspect Ratios and Storytelling: Why the Frame Shape Matters
 How Directors Use Silence as a Dramatic Tool
