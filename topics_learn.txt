@@ -77,7 +77,7 @@
 [SENT] The difference between motivated and unmotivated lighting
 [SENT] How to light a face using a single source
 [SENT] What the key light, fill light, and back light do
-How to use negative fill to create drama
+[SENT] How to use negative fill to create drama
 Why lens choice affects how subjects look
 How to shoot in low light without noise
 The difference between a hard light and a soft light
