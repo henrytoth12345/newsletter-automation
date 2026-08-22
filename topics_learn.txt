@@ -79,7 +79,7 @@
 [SENT] What the key light, fill light, and back light do
 [SENT] How to use negative fill to create drama
 [SENT] Why lens choice affects how subjects look
-How to shoot in low light without noise
+[SENT] How to shoot in low light without noise
 The difference between a hard light and a soft light
 How to use practical lights in a scene
 What anamorphic lenses do to an image
