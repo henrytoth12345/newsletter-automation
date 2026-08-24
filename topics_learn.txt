@@ -81,7 +81,7 @@
 [SENT] Why lens choice affects how subjects look
 [SENT] How to shoot in low light without noise
 [SENT] The difference between a hard light and a soft light
-How to use practical lights in a scene
+[SENT] How to use practical lights in a scene
 What anamorphic lenses do to an image
 How to create the illusion of depth in a flat shot
 The rule of thirds and when to break it
