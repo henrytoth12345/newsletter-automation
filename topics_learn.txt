@@ -85,4 +85,4 @@
 [SENT] What anamorphic lenses do to an image
 [SENT] How to create the illusion of depth in a flat shot
 [SENT] The rule of thirds and when to break it
-How to use foreground elements to add depth
+[SENT] How to use foreground elements to add depth
