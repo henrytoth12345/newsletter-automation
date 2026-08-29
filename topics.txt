@@ -99,7 +99,7 @@
 [SENT] The Art of the Montage: Eisenstein's Legacy in Modern Film
 [SENT] Improvisation on Set: How Directors Work With Actors Who Go Off Script
 [SENT] How Sound Mixers Shape the Emotional Experience of a Film
-The Art of the Reaction Shot: Why Listening Is More Powerful Than Speaking
+[SENT] The Art of the Reaction Shot: Why Listening Is More Powerful Than Speaking
 Continuity Editing: The Rules That Keep Audiences Inside the Story
 How Directors Build Tension Without Action
 The Magic Hour: Why Filmmakers Chase That 20-Minute Window of Light
