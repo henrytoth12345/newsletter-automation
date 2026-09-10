@@ -113,7 +113,7 @@
 [SENT] How TikTok Is Changing Movie Marketing Forever
 [SENT] The Oscar Campaign: How Films Win (and Buy) Awards
 [SENT] Netflix Original Films vs. Theatrical Releases: What the Data Shows
-The Decline of the Star System: When A-List Names Stopped Opening Movies
+[SENT] The Decline of the Star System: When A-List Names Stopped Opening Movies
 How China's Box Office Shapes Hollywood Decisions
 The Rise of the Podcast-to-Film Pipeline
 IMAX and Premium Large Format: The Business Behind Bigger Screens
